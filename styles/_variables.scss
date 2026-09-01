@@ -1,0 +1,47 @@
+:root {
+    // Confirmed ACRES colour names; values remain unset until officially confirmed.
+    --color-brand-fossil-light: var(--acres-color-fossil-light, initial);
+    --color-brand-basalt-grey: var(--acres-color-basalt-grey, initial);
+    --color-brand-carbon-black: var(--acres-color-carbon-black, initial);
+    --color-brand-soil-brown: var(--acres-color-soil-brown, initial);
+    --color-brand-living-green: var(--acres-color-living-green, initial);
+
+    // Initial web-design decisions, separate from confirmed brand colours.
+    --color-ui-surface: #f5f4ef;
+    --color-ui-surface-raised: #ffffff;
+    --color-ui-surface-inverse: #1d211e;
+    --color-ui-text: #1d211e;
+    --color-ui-text-muted: #626860;
+    --color-ui-text-inverse: #f5f4ef;
+    --color-ui-border: #d9ddd5;
+    --color-ui-focus: #1d211e;
+
+    --font-family-heading: var(--font-sora), sans-serif;
+    --font-family-body: var(--font-inter), sans-serif;
+    --font-size-body: 1rem;
+    --font-size-small: 0.875rem;
+    --font-size-heading-1: clamp(2.5rem, 7vw, 5.5rem);
+    --font-size-heading-2: clamp(2rem, 5vw, 4rem);
+    --font-size-heading-3: clamp(1.5rem, 3vw, 2.5rem);
+    --line-height-body: 1.6;
+    --line-height-heading: 1.08;
+
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-24: 6rem;
+
+    --container-content: 72rem;
+    --container-gutter: clamp(1.25rem, 4vw, 4rem);
+    --breakpoint-medium: 48rem;
+    --breakpoint-large: 75rem;
+
+    --radius-small: 0.25rem;
+    --radius-medium: 0.5rem;
+    --transition-standard: 180ms ease;
+}

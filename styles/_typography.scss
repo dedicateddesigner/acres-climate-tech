@@ -1,0 +1,49 @@
+body {
+    font-family: var(--font-family-body);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-family: var(--font-family-heading);
+    line-height: var(--line-height-heading);
+    text-wrap: balance;
+}
+
+h1 {
+    font-size: var(--font-size-heading-1);
+}
+
+h2 {
+    font-size: var(--font-size-heading-2);
+}
+
+h3 {
+    font-size: var(--font-size-heading-3);
+}
+
+p {
+    margin: 0;
+    max-width: 65ch;
+}
+
+a {
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.18em;
+    transition: color var(--transition-standard);
+}
+
+a:hover {
+    color: var(--color-ui-text-muted);
+}
+
+button {
+    border: 0;
+    background: transparent;
+}

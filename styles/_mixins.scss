@@ -1,0 +1,15 @@
+@mixin content-container {
+    width: min(100% - (var(--container-gutter) * 2), var(--container-content));
+    margin-inline: auto;
+}
+
+@mixin visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
