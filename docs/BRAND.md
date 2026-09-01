@@ -52,6 +52,46 @@ Inter
 
 The ammonite/geological symbol should be treated as a meaningful brand device rather than decorative repetition.
 
+## Logo & Extended Visual Language
+
+### Design Direction
+
+Deep Time → Geology → Carbon → Soil → Living Land
+
+### Logo Principles
+
+The spiral is inspired by deep geological time and natural cycles. It represents geological formations, fossils/deep time, natural cycles, transformation, continuity, and the movement of carbon through Earth's systems.
+
+Literal leaf, tree, farm, or recycling symbols were intentionally avoided.
+
+The symbol represents Nature / Earth / Deep Time / Cycles.
+
+The wordmark represents Technology / Measurement / Scale / Future.
+
+Together they communicate: Technology working within natural systems.
+
+The typography intentionally sits between technology and humanity. It should feel approachable rather than futuristic, sharp, aggressive, sci-fi, or overly technical.
+
+ACRES should not look like a conventional agricultural company or an abstract Silicon Valley software company.
+
+The farmer is part of the system, not simply the recipient of technology.
+
+### Extended Visual Language
+
+- Spiral → Deep Time
+- Layers → Geology
+- Dots / Particles → Carbon
+- Soil Strata → Soil
+- Roots / Growth → Living Land
+
+### Tagline
+
+CARBON. SOIL. FUTURE.
+
+- CARBON — what ACRES works with.
+- SOIL — where value can be created.
+- FUTURE — what the work ultimately contributes to.
+
 ## Motion
 
 Motion should communicate transformation, process and geological/agricultural relationships.
