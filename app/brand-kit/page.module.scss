@@ -1,0 +1,177 @@
+@use "../../styles/mixins";
+
+.page {
+    min-height: 100vh;
+    background: var(--color-brand-fossil-light);
+    color: var(--color-brand-carbon-black);
+}
+
+.header {
+    border-bottom: 1px solid color-mix(in srgb, var(--color-brand-basalt-grey) 45%, transparent);
+    padding-block: var(--space-6);
+}
+
+.headerInner,
+.content {
+    @include mixins.content-container;
+}
+
+.headerInner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+}
+
+.logoLink {
+    display: inline-flex;
+    align-items: center;
+}
+
+.logo {
+    display: block;
+    width: 10rem;
+    height: auto;
+}
+
+.headerLabel,
+.eyebrow,
+.sectionIndex {
+    color: var(--color-brand-basalt-grey);
+    font-size: var(--font-size-small);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.headerLabel {
+    margin: 0;
+}
+
+.content {
+    padding-block: clamp(4rem, 10vw, 9rem) var(--space-24);
+}
+
+.introduction {
+    max-width: 58rem;
+    padding-bottom: clamp(5rem, 12vw, 10rem);
+}
+
+.eyebrow {
+    margin-bottom: var(--space-6);
+    color: var(--color-brand-living-green);
+    font-weight: 600;
+}
+
+.introduction h1 {
+    max-width: 10ch;
+    font-weight: 500;
+}
+
+.lede {
+    max-width: 42rem;
+    margin-top: var(--space-8);
+    color: var(--color-brand-basalt-grey);
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    line-height: 1.45;
+}
+
+.overview,
+.contents,
+.referenceSection {
+    display: grid;
+    grid-template-columns: minmax(9rem, 0.35fr) minmax(0, 1fr);
+    gap: clamp(2rem, 8vw, 9rem);
+    border-top: 1px solid color-mix(in srgb, var(--color-brand-basalt-grey) 45%, transparent);
+    padding-block: var(--space-6) clamp(4rem, 8vw, 7rem);
+}
+
+.sectionIndex {
+    margin: 0;
+}
+
+.overview h2,
+.referenceSection h2 {
+    max-width: 19ch;
+    margin-bottom: var(--space-6);
+    font-size: var(--font-size-heading-3);
+    font-weight: 500;
+}
+
+.overview p:not(.sectionIndex),
+.referenceSection p:not(.sectionIndex) {
+    max-width: 42rem;
+    color: var(--color-brand-basalt-grey);
+}
+
+.overview p + p,
+.referenceSection p + p {
+    margin-top: var(--space-4);
+}
+
+.contents {
+    padding-bottom: clamp(5rem, 10vw, 9rem);
+}
+
+.contents ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4) var(--space-8);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.contents a {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-4);
+    color: var(--color-brand-carbon-black);
+    font-family: var(--font-family-heading);
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
+    text-decoration: none;
+}
+
+.contents a span {
+    color: var(--color-brand-living-green);
+    font-family: var(--font-family-body);
+    font-size: var(--font-size-small);
+}
+
+.contents a:hover {
+    color: var(--color-brand-soil-brown);
+}
+
+.referenceSections {
+    border-bottom: 1px solid color-mix(in srgb, var(--color-brand-basalt-grey) 45%, transparent);
+}
+
+.referenceSection:last-child {
+    padding-bottom: var(--space-24);
+}
+
+.logoLink:focus-visible,
+.contents a:focus-visible {
+    outline: 2px solid var(--color-ui-focus);
+    outline-offset: 4px;
+}
+
+@media (max-width: 700px) {
+    .header {
+        padding-block: var(--space-4);
+    }
+
+    .logo {
+        width: 8.5rem;
+    }
+
+    .overview,
+    .contents,
+    .referenceSection {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+
+    .contents ul {
+        grid-template-columns: 1fr;
+    }
+}
