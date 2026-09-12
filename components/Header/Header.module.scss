@@ -1,0 +1,108 @@
+.header {
+    padding-block: var(--space-6);
+}
+
+.inner {
+    display: flex;
+    width: min(100% - (var(--container-gutter) * 2), var(--container-content));
+    min-height: 3.0625rem;
+    margin-inline: auto;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+.logoLink {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+}
+
+.logo {
+    display: block;
+    width: 10rem;
+    height: auto;
+}
+
+.navigation {
+    margin-left: auto;
+}
+
+.navigationList {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-6);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navigationLink {
+    display: inline-block;
+    color: var(--color-brand-carbon-black);
+    font-size: var(--font-size-small);
+    text-decoration: none;
+}
+
+.navigationLink:hover {
+    color: var(--color-brand-living-green);
+}
+
+.cta {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-brand-carbon-black);
+    color: var(--color-brand-fossil-light);
+    font-size: var(--font-size-small);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.cta:hover {
+    background: var(--color-brand-living-green);
+    color: var(--color-brand-fossil-light);
+}
+
+.logoLink:focus-visible,
+.navigationLink:focus-visible,
+.cta:focus-visible {
+    outline: 2px solid var(--color-ui-focus);
+    outline-offset: 4px;
+}
+
+@media (max-width: 900px) {
+    .inner {
+        flex-wrap: wrap;
+        gap: var(--space-4) var(--space-6);
+    }
+
+    .navigation {
+        order: 3;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .navigationList {
+        justify-content: flex-start;
+        gap: var(--space-3) var(--space-6);
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding-block: var(--space-4);
+    }
+
+    .logo {
+        width: 8.5rem;
+    }
+
+    .navigationList {
+        gap: var(--space-2) var(--space-4);
+    }
+}
