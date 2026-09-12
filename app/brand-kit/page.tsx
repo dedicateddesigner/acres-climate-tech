@@ -150,7 +150,9 @@ export default function BrandKitPage() {
             <div className={styles.colourGrid}>
               {colours.map((colour) => (
                 <article className={`${styles.colourItem} ${styles[colour.className]}`} key={colour.name}>
-                  <div className={styles.swatch} aria-hidden="true" />
+                  <div className={styles.swatch}>
+                    <span>{colour.hex}</span>
+                  </div>
                   <div className={styles.colourMeta}><strong>{colour.name}</strong><CopyButton value={colour.hex} /></div>
                 </article>
               ))}

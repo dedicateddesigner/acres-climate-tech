@@ -1,25 +1,46 @@
 .button {
     display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    gap: var(--space-4);
-    min-width: 9rem;
-    padding: var(--space-2) var(--space-3);
-    border: 1px solid currentColor;
+    gap: var(--space-2);
+    padding: 0;
+    border: 0;
     border-radius: 0;
     background: transparent;
-    color: inherit;
+    color: var(--color-brand-carbon-black);
     font-size: var(--font-size-small);
     text-align: left;
 }
 
 .button:hover {
-    background: currentColor;
-    color: var(--color-brand-fossil-light);
+    background: transparent;
+    color: var(--color-brand-living-green);
 }
 
-.value {
-    font-variant-numeric: tabular-nums;
+.icon {
+    position: relative;
+    display: inline-block;
+    width: 0.75rem;
+    height: 0.75rem;
+    border: 1px solid currentColor;
+}
+
+.icon::after {
+    position: absolute;
+    top: -0.25rem;
+    left: 0.2rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    border: 1px solid currentColor;
+    background: var(--color-brand-fossil-light);
+    content: "";
+}
+
+.button[data-status="copied"] {
+    color: var(--color-brand-living-green);
+}
+
+.button[data-status="unavailable"] {
+    color: var(--color-brand-soil-brown);
 }
 
 .button:focus-visible {

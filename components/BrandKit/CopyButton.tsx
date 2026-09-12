@@ -28,9 +28,15 @@ export default function CopyButton({ value }: CopyButtonProps) {
   }
 
   return (
-    <button className={styles.button} type="button" onClick={handleCopy}>
-      <span className={styles.value}>{value}</span>
-      <span aria-live="polite">{status}</span>
+    <button
+      className={styles.button}
+      type="button"
+      onClick={handleCopy}
+      aria-label={`${status === "Copy" ? "Copy" : status} colour code ${value}`}
+      data-status={status.toLowerCase()}
+    >
+      <span className={styles.icon} aria-hidden="true" />
+      <span aria-live="polite">{status === "Copy" ? "Copy colour code" : status}</span>
     </button>
   );
 }
