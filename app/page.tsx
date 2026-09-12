@@ -3,67 +3,57 @@ import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
+    <main className={styles.page}>
+      <header className={styles.header}>
         <Image
           className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+          src="/acres-logo.svg"
+          alt="ACRES"
+          width={200}
+          height={49}
           priority
         />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+        <p className={styles.previewLabel}>Brand preview / 01</p>
+      </header>
+
+      <section className={styles.intro} aria-labelledby="page-title">
+        <p className={styles.eyebrow}>Material + Science + Agriculture</p>
+        <h1 id="page-title">ACRES Brand Foundation</h1>
+        <p className={styles.supportingLine}>
+          A temporary foundation for a climate-tech identity grounded in carbon,
+          soil and living land.
+        </p>
+      </section>
+
+      <section className={styles.identity} aria-label="ACRES identity">
+        <div className={styles.taglineBlock}>
+          <p className={styles.tagline}>CARBON. NATURE. FUTURE.</p>
+          <p className={styles.caption}>Technology working within natural systems.</p>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className={styles.colourSystem} aria-label="ACRES colour system">
+          <div className={`${styles.swatch} ${styles.fossil}`}>
+            <span>Fossil Light</span>
+            <span>#F4F5F0</span>
+          </div>
+          <div className={`${styles.swatch} ${styles.basalt}`}>
+            <span>Basalt Grey</span>
+            <span>#777A72</span>
+          </div>
+          <div className={`${styles.swatch} ${styles.carbon}`}>
+            <span>Carbon Black</span>
+            <span>#151714</span>
+          </div>
+          <div className={`${styles.swatch} ${styles.soil}`}>
+            <span>Soil Brown</span>
+            <span>#76553D</span>
+          </div>
+          <div className={`${styles.swatch} ${styles.living}`}>
+            <span>Living Green</span>
+            <span>#667C4C</span>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }

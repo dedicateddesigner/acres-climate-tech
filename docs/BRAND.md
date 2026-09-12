@@ -19,11 +19,11 @@ Deep time
 
 ## Core colour system
 
-- Fossil Light
-- Basalt Grey
-- Carbon Black
-- Soil Brown
-- Living Green
+- Fossil Light — #F4F5F0
+- Basalt Grey — #777A72
+- Carbon Black — #151714
+- Soil Brown — #76553D
+- Living Green — #667C4C
 
 Living Green should function as the primary accent for actions, highlights and regenerative outcomes.
 
@@ -86,10 +86,10 @@ The farmer is part of the system, not simply the recipient of technology.
 
 ### Tagline
 
-CARBON. SOIL. FUTURE.
+CARBON. NATURE. FUTURE.
 
 - CARBON — what ACRES works with.
-- SOIL — where value can be created.
+- NATURE — the systems ACRES works within.
 - FUTURE — what the work ultimately contributes to.
 
 ## Motion

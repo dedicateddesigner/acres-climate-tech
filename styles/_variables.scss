@@ -1,20 +1,18 @@
 :root {
-    // Confirmed ACRES colour names; values remain unset until officially confirmed.
-    --color-brand-fossil-light: var(--acres-color-fossil-light, initial);
-    --color-brand-basalt-grey: var(--acres-color-basalt-grey, initial);
-    --color-brand-carbon-black: var(--acres-color-carbon-black, initial);
-    --color-brand-soil-brown: var(--acres-color-soil-brown, initial);
-    --color-brand-living-green: var(--acres-color-living-green, initial);
+    --color-brand-fossil-light: #F4F5F0;
+    --color-brand-basalt-grey: #777A72;
+    --color-brand-carbon-black: #151714;
+    --color-brand-soil-brown: #76553D;
+    --color-brand-living-green: #667C4C;
 
-    // Initial web-design decisions, separate from confirmed brand colours.
-    --color-ui-surface: #f5f4ef;
+    --color-ui-surface: var(--color-brand-fossil-light);
     --color-ui-surface-raised: #ffffff;
-    --color-ui-surface-inverse: #1d211e;
-    --color-ui-text: #1d211e;
-    --color-ui-text-muted: #626860;
-    --color-ui-text-inverse: #f5f4ef;
-    --color-ui-border: #d9ddd5;
-    --color-ui-focus: #1d211e;
+    --color-ui-surface-inverse: var(--color-brand-carbon-black);
+    --color-ui-text: var(--color-brand-carbon-black);
+    --color-ui-text-muted: var(--color-brand-basalt-grey);
+    --color-ui-text-inverse: var(--color-brand-fossil-light);
+    --color-ui-border: var(--color-brand-basalt-grey);
+    --color-ui-focus: var(--color-brand-living-green);
 
     --font-family-heading: var(--font-sora), sans-serif;
     --font-family-body: var(--font-inter), sans-serif;
