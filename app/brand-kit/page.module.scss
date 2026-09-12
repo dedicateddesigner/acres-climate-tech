@@ -36,14 +36,17 @@
 
 .headerLabel,
 .eyebrow,
-.sectionIndex {
+.sectionIndex,
+.visualIndex {
     color: var(--color-brand-basalt-grey);
     font-size: var(--font-size-small);
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
-.headerLabel {
+.headerLabel,
+.sectionIndex,
+.visualIndex {
     margin: 0;
 }
 
@@ -77,42 +80,51 @@
 
 .overview,
 .contents,
-.referenceSection {
+.section,
+.quickReference {
     display: grid;
     grid-template-columns: minmax(9rem, 0.35fr) minmax(0, 1fr);
     gap: clamp(2rem, 8vw, 9rem);
     border-top: 1px solid color-mix(in srgb, var(--color-brand-basalt-grey) 45%, transparent);
-    padding-block: var(--space-6) clamp(4rem, 8vw, 7rem);
-}
-
-.sectionIndex {
-    margin: 0;
+    padding-block: var(--space-6) clamp(5rem, 9vw, 8rem);
 }
 
 .overview h2,
-.referenceSection h2 {
+.sectionHeading h2,
+.quickReference h2 {
     max-width: 19ch;
     margin-bottom: var(--space-6);
     font-size: var(--font-size-heading-3);
     font-weight: 500;
 }
 
-.overview p:not(.sectionIndex),
-.referenceSection p:not(.sectionIndex) {
+.copyColumn,
+.sectionBody {
+    min-width: 0;
+}
+
+.copyColumn > p,
+.sectionBody > p {
     max-width: 42rem;
     color: var(--color-brand-basalt-grey);
 }
 
-.overview p + p,
-.referenceSection p + p {
+.copyColumn > p + p,
+.sectionBody > p + p {
     margin-top: var(--space-4);
+}
+
+.emphasis {
+    color: var(--color-brand-soil-brown) !important;
+    font-family: var(--font-family-heading);
+    font-size: 1.15rem;
 }
 
 .contents {
     padding-bottom: clamp(5rem, 10vw, 9rem);
 }
 
-.contents ul {
+.contents ol {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-4) var(--space-8);
@@ -141,18 +153,340 @@
     color: var(--color-brand-soil-brown);
 }
 
-.referenceSections {
-    border-bottom: 1px solid color-mix(in srgb, var(--color-brand-basalt-grey) 45%, transparent);
+.section {
+    scroll-margin-top: var(--space-6);
 }
 
-.referenceSection:last-child {
+.sectionBody > p:first-child {
+    margin-top: 0;
+}
+
+.logoGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-12);
+}
+
+.logoVariant {
+    margin: 0;
+}
+
+.logoSurface {
+    display: grid;
+    min-height: 10rem;
+    place-items: center;
+    padding: var(--space-8);
+}
+
+.logoSurface img {
+    width: min(100%, 20rem);
+    height: auto;
+}
+
+.lightSurface {
+    background: var(--color-brand-fossil-light);
+    border: 1px solid color-mix(in srgb, var(--color-brand-basalt-grey) 45%, transparent);
+}
+
+.darkSurface {
+    background: var(--color-brand-carbon-black);
+}
+
+.assetSurface {
+    padding: 0;
+}
+
+.logoVariant figcaption {
+    display: grid;
+    gap: var(--space-1);
+    margin-top: var(--space-3);
+}
+
+.logoVariant figcaption strong,
+.logoVariant figcaption span {
+    font-size: var(--font-size-small);
+}
+
+.logoVariant figcaption span {
+    color: var(--color-brand-basalt-grey);
+}
+
+.downloads {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.7fr) 1fr;
+    gap: var(--space-8);
+    border-top: 1px solid color-mix(in srgb, var(--color-brand-basalt-grey) 45%, transparent);
+    margin-top: var(--space-12);
+    padding-top: var(--space-6);
+}
+
+.downloads p {
+    color: var(--color-brand-basalt-grey);
+}
+
+.subheading,
+.downloadLabel {
+    color: var(--color-brand-carbon-black) !important;
+    font-family: var(--font-family-heading);
+}
+
+.downloadGroups {
+    display: grid;
+    gap: var(--space-4);
+}
+
+.downloadGroup {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-3);
+}
+
+.downloadLabel {
+    width: 5rem;
+    font-size: var(--font-size-small);
+}
+
+.downloadGroup a {
+    padding: var(--space-1) var(--space-2);
+    border: 1px solid var(--color-brand-basalt-grey);
+    color: var(--color-brand-carbon-black);
+    font-size: var(--font-size-small);
+    text-decoration: none;
+}
+
+.downloadGroup a:hover {
+    border-color: var(--color-brand-living-green);
+    color: var(--color-brand-living-green);
+}
+
+.typeGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-12);
+}
+
+.typeSpecimen {
+    min-height: 18rem;
+    padding: var(--space-6);
+    border-top: 0.5rem solid var(--color-brand-living-green);
+    background: var(--color-brand-carbon-black);
+    color: var(--color-brand-fossil-light);
+}
+
+.typeSpecimen p {
+    margin-top: var(--space-3);
+    color: inherit;
+}
+
+.soraSpecimen {
+    font-family: var(--font-family-heading);
+}
+
+.interSpecimen {
+    border-top-color: var(--color-brand-soil-brown);
+    font-family: var(--font-family-body);
+}
+
+.specimenLabel {
+    display: block;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1;
+}
+
+.typeSpecimen h3 {
+    margin-top: var(--space-6);
+    font-size: 1.5rem;
+}
+
+.colourGrid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    margin-top: var(--space-12);
+}
+
+.colourItem {
+    min-width: 0;
+    color: var(--color-brand-carbon-black);
+}
+
+.swatch {
+    min-height: 13rem;
+    background: currentColor;
+}
+
+.colourItem.fossil { color: var(--color-brand-fossil-light); border: 1px solid color-mix(in srgb, var(--color-brand-basalt-grey) 45%, transparent); }
+.colourItem.basalt { color: var(--color-brand-basalt-grey); }
+.colourItem.carbon { color: var(--color-brand-carbon-black); }
+.colourItem.soil { color: var(--color-brand-soil-brown); }
+.colourItem.living { color: var(--color-brand-living-green); }
+
+.colourMeta {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    background: var(--color-brand-fossil-light);
+}
+
+.colourMeta strong {
+    font-size: var(--font-size-small);
+}
+
+.languageDisplay {
+    color: var(--color-brand-carbon-black) !important;
+    font-family: var(--font-family-heading);
+    font-size: clamp(1.25rem, 3vw, 2.5rem);
+    line-height: 1.2;
+}
+
+.visualGrid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1px;
+    margin-top: var(--space-12);
+    background: var(--color-brand-basalt-grey);
+}
+
+.visualItem {
+    min-width: 0;
+    min-height: 20rem;
+    padding: var(--space-4);
+    background: var(--color-brand-fossil-light);
+}
+
+.visualForm {
+    position: relative;
+    height: 6rem;
+    margin-bottom: var(--space-8);
+    overflow: hidden;
+}
+
+.visualForm span {
+    position: absolute;
+    display: block;
+}
+
+.spiral span {
+    border: 1px solid var(--color-brand-soil-brown);
+    border-radius: 50%;
+}
+
+.spiral span:nth-child(1) { inset: 0 1.5rem 0 0; }
+.spiral span:nth-child(2) { inset: 1rem 2.5rem 1rem 1rem; }
+.spiral span:nth-child(3) { inset: 2rem 3.5rem 2rem 2rem; }
+
+.layers span {
+    right: 0;
+    left: 0;
+    height: 1px;
+    background: var(--color-brand-soil-brown);
+    transform: rotate(-8deg);
+}
+
+.layers span:nth-child(1) { top: 1rem; }
+.layers span:nth-child(2) { top: 3rem; }
+.layers span:nth-child(3) { top: 5rem; }
+
+.particles span {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: var(--color-brand-living-green);
+}
+
+.particles span:nth-child(1) { top: 1rem; left: 1rem; }
+.particles span:nth-child(2) { top: 3rem; left: 4rem; background: var(--color-brand-soil-brown); }
+.particles span:nth-child(3) { top: 4.5rem; left: 7rem; }
+
+.strata span {
+    right: 0;
+    left: 0;
+    height: 1rem;
+    border-top: 1px solid var(--color-brand-soil-brown);
+}
+
+.strata span:nth-child(1) { top: 1rem; }
+.strata span:nth-child(2) { top: 3rem; }
+.strata span:nth-child(3) { top: 5rem; }
+
+.growth span {
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    height: 5rem;
+    background: var(--color-brand-living-green);
+    transform-origin: bottom;
+}
+
+.growth span:nth-child(1) { transform: rotate(-28deg); }
+.growth span:nth-child(2) { height: 4rem; }
+.growth span:nth-child(3) { transform: rotate(28deg); }
+
+.visualIndex {
+    color: var(--color-brand-living-green);
+}
+
+.visualItem h3 {
+    margin-top: var(--space-2);
+    font-family: var(--font-family-body);
+    font-size: 1rem;
+}
+
+.visualItem h3 span {
+    color: var(--color-brand-basalt-grey);
+    font-weight: 400;
+}
+
+.visualItem > p:last-child {
+    margin-top: var(--space-4);
+    color: var(--color-brand-basalt-grey);
+    font-size: var(--font-size-small);
+}
+
+.quickReference {
+    border-bottom: 1px solid color-mix(in srgb, var(--color-brand-basalt-grey) 45%, transparent);
     padding-bottom: var(--space-24);
 }
 
+.quickReference dl {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 var(--space-8);
+    margin: 0;
+}
+
+.quickReference dl > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-brand-basalt-grey) 35%, transparent);
+    padding-block: var(--space-3);
+}
+
+.quickReference dt {
+    color: var(--color-brand-basalt-grey);
+    font-size: var(--font-size-small);
+}
+
+.quickReference dd {
+    margin: 0;
+    font-size: var(--font-size-small);
+}
+
 .logoLink:focus-visible,
-.contents a:focus-visible {
+.contents a:focus-visible,
+.downloadGroup a:focus-visible {
     outline: 2px solid var(--color-ui-focus);
     outline-offset: 4px;
+}
+
+@media (max-width: 900px) {
+    .colourGrid,
+    .visualGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 700px) {
@@ -166,12 +500,41 @@
 
     .overview,
     .contents,
-    .referenceSection {
+    .section,
+    .quickReference,
+    .downloads {
         grid-template-columns: 1fr;
         gap: var(--space-4);
     }
 
-    .contents ul {
+    .contents ol,
+    .typeGrid,
+    .quickReference dl {
         grid-template-columns: 1fr;
+    }
+
+    .logoGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .colourGrid,
+    .visualGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .visualItem {
+        min-height: 17rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .colourGrid,
+    .visualGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .logoSurface {
+        min-height: 8rem;
+        padding: var(--space-4);
     }
 }

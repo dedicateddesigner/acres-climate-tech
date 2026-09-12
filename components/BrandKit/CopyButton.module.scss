@@ -1,0 +1,28 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-width: 9rem;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid currentColor;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    font-size: var(--font-size-small);
+    text-align: left;
+}
+
+.button:hover {
+    background: currentColor;
+    color: var(--color-brand-fossil-light);
+}
+
+.value {
+    font-variant-numeric: tabular-nums;
+}
+
+.button:focus-visible {
+    outline: 2px solid var(--color-ui-focus);
+    outline-offset: 4px;
+}
