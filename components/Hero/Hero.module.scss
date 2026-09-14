@@ -1,0 +1,236 @@
+@use "../../styles/mixins";
+
+.hero {
+    min-height: min(48rem, calc(100vh - 6rem));
+    display: grid;
+    align-items: center;
+    background: var(--color-brand-fossil-light);
+    color: var(--color-brand-carbon-black);
+}
+
+.inner {
+    @include mixins.content-container;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(22rem, 0.95fr);
+    gap: clamp(3rem, 8vw, 9rem);
+    align-items: center;
+    padding-block: clamp(3rem, 6vw, 5rem) clamp(4rem, 7vw, 6rem);
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    max-width: 43rem;
+}
+
+.eyebrow,
+.visualLabel {
+    margin: 0;
+    color: var(--color-brand-living-green);
+    font-size: var(--font-size-small);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.eyebrow {
+    margin-bottom: var(--space-6);
+}
+
+.content h1 {
+    max-width: 25ch;
+    font-size: clamp(2.75rem, 4.2vw, 3rem);
+    font-weight: 500;
+    line-height: 1.15;
+}
+
+.supportingCopy {
+    max-width: 38rem;
+    margin-top: var(--space-8);
+    color: var(--color-brand-basalt-grey);
+    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+    line-height: 1.5;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4) var(--space-6);
+    margin-top: var(--space-12);
+}
+
+.primaryAction,
+.secondaryAction {
+    display: inline-flex;
+    min-height: 2.9rem;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--font-size-small);
+    text-decoration: none;
+    transition: background-color var(--transition-standard), color var(--transition-standard), border-color var(--transition-standard);
+}
+
+.primaryAction {
+    background: var(--color-brand-carbon-black);
+    color: var(--color-brand-fossil-light);
+}
+
+.primaryAction:hover {
+    background: var(--color-brand-living-green);
+}
+
+.secondaryAction {
+    border-bottom: 1px solid var(--color-brand-basalt-grey);
+    color: var(--color-brand-carbon-black);
+    padding-inline: 0;
+}
+
+.secondaryAction:hover {
+    border-color: var(--color-brand-living-green);
+    color: var(--color-brand-living-green);
+}
+
+.primaryAction:focus-visible,
+.secondaryAction:focus-visible {
+    outline: 2px solid var(--color-ui-focus);
+    outline-offset: 4px;
+}
+
+.visual {
+    min-width: 0;
+}
+
+.visualFrame {
+    position: relative;
+    width: min(100%, 34rem);
+    aspect-ratio: 1 / 1.08;
+    margin-inline: auto;
+    overflow: hidden;
+    border-left: 1px solid color-mix(in srgb, var(--color-brand-basalt-grey) 45%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-brand-basalt-grey) 45%, transparent);
+}
+
+.visualFrame::before,
+.visualFrame::after {
+    position: absolute;
+    content: "";
+    pointer-events: none;
+}
+
+.visualFrame::before {
+    inset: 12% 10% 12% 12%;
+    border: 1px solid color-mix(in srgb, var(--color-brand-soil-brown) 50%, transparent);
+    border-radius: 50%;
+    transform: rotate(-12deg) scaleY(0.82);
+}
+
+.visualFrame::after {
+    top: 9%;
+    bottom: 9%;
+    left: 50%;
+    width: 1px;
+    background: color-mix(in srgb, var(--color-brand-basalt-grey) 35%, transparent);
+}
+
+.visualFrame img {
+    position: absolute;
+    display: block;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.spiral {
+    top: 12%;
+    left: 9%;
+    width: 64%;
+    opacity: 0.88;
+}
+
+.layers {
+    top: 30%;
+    right: 5%;
+    width: 55%;
+    opacity: 0.68;
+}
+
+.particles {
+    top: 56%;
+    left: 56%;
+    width: 25%;
+    opacity: 0.52;
+}
+
+.axis {
+    position: absolute;
+    right: 16%;
+    bottom: 9%;
+    left: 12%;
+    height: 1px;
+    background: var(--color-brand-soil-brown);
+    opacity: 0.7;
+}
+
+.visualLabel {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    color: var(--color-brand-basalt-grey);
+    font-size: 0.6875rem;
+    font-weight: 500;
+}
+
+@media (max-width: 900px) {
+    .inner {
+        grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.9fr);
+        gap: clamp(2rem, 6vw, 4rem);
+    }
+
+    .content h1 {
+        font-size: clamp(2.65rem, 6vw, 4.5rem);
+    }
+}
+
+@media (max-width: 800px) {
+    .hero {
+        min-height: auto;
+    }
+
+    .inner {
+        grid-template-columns: 1fr;
+        gap: var(--space-12);
+        padding-block: var(--space-12) var(--space-16);
+    }
+
+    .content h1 {
+        max-width: 12ch;
+        font-size: clamp(2.65rem, 12vw, 4rem);
+    }
+
+    .supportingCopy {
+        margin-top: var(--space-6);
+    }
+
+    .actions {
+        margin-top: var(--space-8);
+    }
+
+    .visualFrame {
+        width: min(100%, 28rem);
+    }
+}
+
+@media (max-width: 700px) {
+    .visualFrame {
+        width: min(100%, 19rem);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .primaryAction,
+    .secondaryAction {
+        transition: none;
+    }
+}
