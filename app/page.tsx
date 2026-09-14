@@ -1,5 +1,6 @@
 import Header from "../components/Header/Header";
 import Hero from "../components/Hero/Hero";
+import Background from "../components/Background/Background";
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Background />
       </main>
     </>
   );
