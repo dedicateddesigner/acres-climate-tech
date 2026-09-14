@@ -36,11 +36,11 @@ const colours = [
 ];
 
 const visualLanguage = [
-  { label: "Spiral", concept: "Deep Time", description: "Geological time and natural cycles held in continuous movement.", form: "spiral" },
-  { label: "Layers", concept: "Geology", description: "Material depth expressed through strata, pressure and formation.", form: "layers" },
-  { label: "Dots / Particles", concept: "Carbon", description: "Small units gathered into measurable material systems.", form: "particles" },
-  { label: "Soil Strata", concept: "Soil", description: "Visible layers connecting material transformation to living ground.", form: "strata" },
-  { label: "Roots / Growth", concept: "Living Land", description: "Connected systems that extend, regenerate and support life.", form: "growth" },
+  { label: "Spiral", concept: "Deep Time", description: "Geological time and natural cycles held in continuous movement.", src: "/assets/visual-language/spiral.svg", hoverSrc: "/assets/visual-language/spiral.png", width: 134, height: 126 },
+  { label: "Layers", concept: "Geology", description: "Material depth expressed through strata, pressure and formation.", src: "/assets/visual-language/Layers.svg", hoverSrc: "/assets/visual-language/Layers.png", width: 183, height: 121 },
+  { label: "Dots / Particles", concept: "Carbon", description: "Small units gathered into measurable material systems.", src: "/assets/visual-language/Particles.svg", hoverSrc: "/assets/visual-language/Particles.png", width: 149, height: 128 },
+  { label: "Soil Strata", concept: "Soil", description: "Visible layers connecting material transformation to living ground.", src: "/assets/visual-language/soil.svg", hoverSrc: "/assets/visual-language/soil.png", width: 182, height: 105 },
+  { label: "Roots / Growth", concept: "Living Land", description: "Connected systems that extend, regenerate and support life.", src: "/assets/visual-language/Roots.svg", hoverSrc: "/assets/visual-language/Roots.png", width: 200, height: 170 },
 ];
 
 export default function BrandKitPage() {
@@ -151,9 +151,12 @@ export default function BrandKitPage() {
               {colours.map((colour) => (
                 <article className={`${styles.colourItem} ${styles[colour.className]}`} key={colour.name}>
                   <div className={styles.swatch}>
-                    <span>{colour.hex}</span>
+                    <div className={styles.colourLabel}>
+                      <span>{colour.hex}</span>
+                      <strong>{colour.name}</strong>
+                    </div>
+                    <CopyButton value={colour.hex} />
                   </div>
-                  <div className={styles.colourMeta}><strong>{colour.name}</strong><CopyButton value={colour.hex} /></div>
                 </article>
               ))}
             </div>
@@ -183,7 +186,10 @@ export default function BrandKitPage() {
             <div className={styles.visualGrid}>
               {visualLanguage.map((item, index) => (
                 <article className={styles.visualItem} key={item.label}>
-                  <div className={`${styles.visualForm} ${styles[item.form]}`} aria-hidden="true"><span /><span /><span /></div>
+                  <div className={styles.visualForm} aria-hidden="true">
+                    <Image className={`${styles.visualImage} ${styles.visualImageNormal}`} src={item.src} alt="" width={item.width} height={item.height} />
+                    <Image className={`${styles.visualImage} ${styles.visualImageHover}`} src={item.hoverSrc} alt="" width={item.width} height={item.height} />
+                  </div>
                   <p className={styles.visualIndex}>0{index + 1}</p>
                   <h3>{item.label} <span>→ {item.concept}</span></h3>
                   <p>{item.description}</p>

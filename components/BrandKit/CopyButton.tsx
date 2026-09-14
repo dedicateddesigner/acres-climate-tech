@@ -36,7 +36,7 @@ export default function CopyButton({ value }: CopyButtonProps) {
       data-status={status.toLowerCase()}
     >
       <span className={styles.icon} aria-hidden="true" />
-      <span aria-live="polite">{status === "Copy" ? "Copy colour code" : status}</span>
+      <span aria-live="polite">{status}</span>
     </button>
   );
 }
