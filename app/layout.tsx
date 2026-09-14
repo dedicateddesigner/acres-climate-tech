@@ -15,6 +15,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "ACRES Brand Foundation",
   description: "A temporary preview of the ACRES brand foundation.",
+  icons:{
+    icon:"/assets/logo/png/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
