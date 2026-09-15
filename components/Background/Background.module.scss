@@ -8,28 +8,51 @@
 
 .inner {
     @include mixins.content-container;
-    padding-block: clamp(5rem, 11vw, 10rem) clamp(6rem, 13vw, 12rem);
 }
 
-.introduction,
-.body {
-    display: grid;
-    grid-template-columns: minmax(8rem, 0.45fr) minmax(0, 1fr);
-    gap: clamp(2rem, 8vw, 8rem);
-    border-top: 1px solid color-mix(in srgb, var(--color-brand-basalt-grey) 45%, transparent);
-    padding-top: var(--space-6);
+.inner:first-of-type {
+    padding-top: clamp(4rem, 9vw, 8rem);
 }
 
-.introduction h2 {
-    max-width: 17ch;
-    font-size: clamp(2rem, 4.6vw, 4.75rem);
-    font-weight: 500;
-    line-height: 1.06;
-}
-
-.index,
-.visualLabel {
+.index {
     margin: 0;
+    color: var(--color-brand-living-green);
+    font-size: var(--font-size-small);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.headline {
+    max-width: 26ch;
+    margin: var(--space-4) auto 0;
+    font-size: clamp(1.875rem, 3.6vw, 3.5rem);
+    font-weight: 500;
+    line-height: 1.1;
+    text-align: center;
+}
+
+.textGrid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: start;
+    margin-top: clamp(2.5rem, 6vw, 5rem);
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.textGrid .column:last-child {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.columnLabel {
     color: var(--color-brand-living-green);
     font-size: var(--font-size-small);
     font-weight: 600;
@@ -37,179 +60,113 @@
     text-transform: uppercase;
 }
 
-.body {
-    margin-top: clamp(2.5rem, 5vw, 5rem);
-}
-
-.body p {
-    max-width: 43rem;
+.column p {
     color: var(--color-brand-basalt-grey);
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-size: clamp(0.95rem, 1.2vw, 1.0625rem);
     line-height: 1.65;
 }
 
-.body p + p {
-    grid-column: 2;
-    margin-top: var(--space-2);
+.divider {
+    display: flex;
+    align-self: stretch;
+    justify-content: center;
+}
+
+.dividerMarker {
+    position: relative;
+    width: 1px;
+    height: 100%;
+    background: color-mix(in srgb, var(--color-brand-basalt-grey) 45%, transparent);
+}
+
+.dividerMarker::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.5rem;
+    height: 0.5rem;
+    background: var(--color-brand-living-green);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sameField {
+    margin: clamp(1.5rem, 4vw, 3rem) 0 0;
+    color: var(--color-brand-soil-brown);
+    font-family: var(--font-family-heading);
+    font-size: clamp(0.9rem, 1.6vw, 1.125rem);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .visualStage {
-    position: relative;
     width: 100vw;
-    min-height: clamp(30rem, 43vw, 38rem);
-    margin-top: clamp(4rem, 10vw, 9rem);
+    margin-top: clamp(1.5rem, 4vw, 3rem);
     margin-left: calc(50% - 50vw);
 }
 
-.visual {
-    position: absolute;
-    margin: 0;
-}
-
-.visual img,
-.soilVisual img {
+.artwork {
     display: block;
     width: 100%;
     height: auto;
 }
 
-.earthVisual {
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: clamp(18rem, 34vw, 32rem);
-}
-
-.greenVisual {
-    right: 0;
-    bottom: 2%;
-    z-index: 2;
-    width: clamp(22rem, 40vw, 38rem);
-}
-
-.soilVisual {
-    position: absolute;
-    top: 31%;
-    left: 1%;
-    z-index: 1;
-    width: 98%;
-}
-
-.visualLabel {
-    position: absolute;
-    z-index: 1;
-    top: var(--space-6);
-    color: var(--color-brand-carbon-black);
-    font-size: 0.6875rem;
-    font-weight: 500;
-    white-space: nowrap;
-}
-
-.earthVisual .visualLabel {
-    left: clamp(1.25rem, 9vw, 8rem);
-}
-
-.greenVisual .visualLabel {
-    right: clamp(1.25rem, 9vw, 8rem);
-}
-
 .conclusion {
-    margin: clamp(3rem, 7vw, 6rem) 0 0;
-    padding-top: var(--space-6);
+    margin: clamp(2.5rem, 6vw, 5rem) 0 0;
+    padding: clamp(2rem, 5vw, 4rem) 0 clamp(4rem, 9vw, 8rem);
     border-top: 1px solid var(--color-brand-soil-brown);
     color: var(--color-brand-soil-brown);
     font-family: var(--font-family-heading);
-    font-size: clamp(1.75rem, 4vw, 4rem);
+    font-size: clamp(1.5rem, 3.4vw, 3rem);
     font-weight: 500;
-    line-height: 1.1;
+    line-height: 1.15;
+    text-align: center;
     text-transform: uppercase;
 }
 
-@media (max-width: 900px) {
-    .introduction,
-    .body {
-        grid-template-columns: minmax(7rem, 0.35fr) minmax(0, 1fr);
-        gap: clamp(1.5rem, 6vw, 4rem);
-    }
-
-    .visualStage { min-height: 31rem; }
-}
-
 @media (max-width: 700px) {
-    .inner {
-        padding-block: var(--space-16) var(--space-24);
+    .inner:first-of-type {
+        padding-top: var(--space-16);
     }
 
-    .introduction,
-    .body {
+    .headline {
+        max-width: 18ch;
+        font-size: clamp(1.75rem, 8vw, 2.5rem);
+    }
+
+    .textGrid {
         grid-template-columns: 1fr;
-        gap: var(--space-4);
-    }
-
-    .introduction h2 {
-        max-width: 14ch;
-        font-size: clamp(2rem, 10vw, 3.25rem);
-    }
-
-    .body {
+        gap: var(--space-6);
         margin-top: var(--space-12);
     }
 
-    .body p + p {
-        grid-column: auto;
-        margin-top: var(--space-2);
+    .textGrid .column:last-child {
+        align-items: flex-start;
+        text-align: left;
     }
 
-    .visualStage {
-        min-height: 40rem;
-        margin-top: var(--space-12);
+    .divider {
+        justify-content: flex-start;
     }
 
-    .earthVisual {
-        top: 0;
-        left: 2%;
-        width: 61%;
+    .dividerMarker {
+        width: 100%;
+        height: 1px;
     }
 
-    .greenVisual {
-        right: 1%;
-        bottom: 0;
-        width: 73%;
-    }
-
-    .soilVisual {
-        top: 39%;
-        left: -1%;
-        width: 102%;
-    }
-
-    .earthVisual .visualLabel {
-        left: 2rem;
-    }
-
-    .greenVisual .visualLabel {
-        right: 2rem;
-    }
-}
-
-@media (max-width: 420px) {
-    .visualStage {
-        min-height: 35rem;
-    }
-
-    .earthVisual {
+    .dividerMarker::before {
         left: 0;
-        width: 64%;
+        transform: translate(0, -50%);
     }
 
-    .greenVisual {
-        right: 0;
-        width: 78%;
+    .visualStage {
+        margin-top: var(--space-8);
     }
 
-    .soilVisual {
-        top: 40%;
-        left: -12%;
-        width: 124%;
+    .conclusion {
+        font-size: clamp(1.375rem, 6vw, 1.75rem);
     }
 }
