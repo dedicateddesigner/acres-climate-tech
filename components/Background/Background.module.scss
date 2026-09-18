@@ -1,17 +1,20 @@
 @use "../../styles/mixins";
 
 .section {
+    position: relative;
     overflow: hidden;
     background: var(--color-brand-fossil-light);
     color: var(--color-brand-carbon-black);
 }
 
 .inner {
+    position: relative;
+    z-index: 1;
     @include mixins.content-container;
 }
 
 .inner:first-of-type {
-    padding-top: clamp(4rem, 9vw, 8rem);
+    padding-top:3rem;
 }
 
 .index {
@@ -38,6 +41,8 @@
     grid-template-columns: 1fr auto 1fr;
     gap: clamp(1.5rem, 4vw, 4rem);
     align-items: start;
+    max-width: 75%;
+    margin: 0 auto;
     margin-top: clamp(2.5rem, 6vw, 5rem);
 }
 
@@ -168,5 +173,30 @@
 
     .conclusion {
         font-size: clamp(1.375rem, 6vw, 1.75rem);
+    }
+}
+
+@media (min-width: 1440px) {
+    .section {
+        aspect-ratio: 1672 / 941;
+    }
+
+    .visualStage {
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        width: auto;
+        margin: 0;
+    }
+
+    .visualStage picture,
+    .artwork {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .artwork {
+        object-fit: contain;
     }
 }
