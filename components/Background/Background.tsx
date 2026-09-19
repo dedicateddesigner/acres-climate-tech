@@ -6,7 +6,6 @@ export default function Background() {
   return (
     <section className={styles.section} aria-labelledby="background-title">
       <div className={styles.inner}>
-        <p className={styles.index}>02 / Background</p>
         <h2 id="background-title" className={styles.headline}>
           A Climate Problem — and a Livelihood Problem — That Meet in the Same Field
         </h2>
