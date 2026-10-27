@@ -1,0 +1,229 @@
+@use "../../styles/mixins";
+
+.section {
+    padding-block: clamp(4rem, 7vw, 7rem);
+    overflow: hidden;
+    background: var(--color-brand-fossil-light);
+    color: var(--color-brand-carbon-black);
+}
+
+.inner {
+    @include mixins.content-container;
+}
+
+/* Intro: heading left, description right */
+.intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+    align-items: start;
+    gap: clamp(2rem, 6vw, 6rem);
+}
+
+.headline {
+    max-width: 12ch;
+    margin: 0;
+    font-size: clamp(2.75rem, 5vw, 4.5rem);
+    font-weight: 500;
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+}
+
+.description {
+    display: grid;
+    gap: var(--space-4);
+    padding-top: 0.5rem;
+}
+
+.description p {
+    margin: 0;
+    color: var(--color-brand-basalt-grey);
+    line-height: 1.65;
+}
+
+/* Soil artwork
+   Extend beyond the centred .inner container.
+   The image keeps its original aspect ratio. */
+
+.soilVisual {
+    position: relative;
+    width: 100vw;
+    margin-top: clamp(1rem, 2vw, 2rem);
+    margin-left: calc(50% - 50vw);
+}
+
+.soilVisual img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Two pathways */
+.pathways {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: clamp(1rem, 2vw, 2rem);
+    border-top: 1px solid var(--color-brand-basalt-grey);
+}
+
+.pathway {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    align-items: center;
+    gap: clamp(0.75rem, 2vw, 2rem);
+    min-width: 0;
+    padding: clamp(1.5rem, 3vw, 3rem);
+}
+
+.pathway+.pathway {
+    border-left: 1px solid var(--color-brand-basalt-grey);
+}
+
+.pathwayContent {
+    min-width: 0;
+}
+
+.pathwayTitle {
+    margin: 0;
+    font-size: clamp(1.35rem, 2.2vw, 2rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+}
+
+.pathwayDescription {
+    margin: var(--space-4) 0 0;
+    color: var(--color-brand-basalt-grey);
+    line-height: 1.6;
+}
+
+.learnMore {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+    color: var(--color-brand-living-green);
+    font-size: var(--font-size-small);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.learnMore span {
+    font-size: 1.5em;
+    line-height: 1;
+    transition: transform 180ms ease;
+}
+
+.learnMore:hover span {
+    transform: translateX(4px);
+}
+
+.learnMore:focus-visible {
+    outline: 2px solid var(--color-brand-living-green);
+    outline-offset: 4px;
+}
+
+.pathwayVisual {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    min-width: 0;
+}
+
+.pathwayVisual img {
+    object-fit: contain;
+}
+
+/* Existing tablet layout */
+@media (max-width: 1000px) {
+    .intro {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+        gap: 2rem;
+    }
+
+    .headline {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+    }
+
+    .pathway {
+        grid-template-columns: 1fr;
+        align-content: start;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+
+    .pathwayVisual {
+        grid-row: 1;
+        aspect-ratio: 5 / 3;
+    }
+
+    .pathwayContent {
+        grid-row: 2;
+    }
+}
+
+/* Existing mobile layout — to refine separately later */
+@media (max-width: 700px) {
+    .section {
+        padding-block: 4rem;
+    }
+
+    .intro {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+
+    .headline {
+        max-width: 13ch;
+        font-size: clamp(2.5rem, 10vw, 3.5rem);
+    }
+
+    .description {
+        padding-top: 0;
+    }
+
+    .soilVisual {
+        margin-top: var(--space-6);
+    }
+
+    .pathways {
+        grid-template-columns: 1fr;
+        margin-top: var(--space-6);
+    }
+
+    .pathway {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+        align-items: center;
+        gap: var(--space-4);
+        padding: var(--space-6) 0;
+    }
+
+    .pathway+.pathway {
+        border-top: 1px solid var(--color-brand-basalt-grey);
+        border-left: 0;
+    }
+
+    .pathwayVisual {
+        grid-row: auto;
+        aspect-ratio: 1;
+    }
+
+    .pathwayContent {
+        grid-row: auto;
+    }
+
+    .pathwayTitle {
+        font-size: 1.35rem;
+    }
+
+    .pathwayDescription {
+        font-size: 0.9375rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .learnMore span {
+        transition: none;
+    }
+}
