@@ -7,29 +7,40 @@
     color: var(--color-brand-carbon-black);
 }
 
-.inner {
+/* ARTWORK
+   The image stays in normal document flow.
+   Its intrinsic ratio determines the section height. */
+
+.artworkStage {
+    width: 100%;
+}
+
+.artworkStage picture {
+    display: block;
+    width: 100%;
+}
+
+.artwork {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* CONTENT
+   The max-width containers are independent of the artwork width. */
+
+.contentLayer {
     position: relative;
     z-index: 1;
+}
+
+.mainContent {
     @include mixins.content-container;
 }
 
-.inner:first-of-type {
-    padding-top:3rem;
-}
-
-.index {
-    margin: 0;
-    color: var(--color-brand-living-green);
-    font-size: var(--font-size-small);
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    text-align: center;
-}
-
 .headline {
-    max-width: 26ch;
-    margin: var(--space-4) auto 0;
+    max-width: 22ch;
+    margin: 0 auto;
     font-size: clamp(1.875rem, 3.6vw, 3.5rem);
     font-weight: 500;
     line-height: 1.1;
@@ -38,18 +49,18 @@
 
 .textGrid {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap:2rem;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: start;
-    max-width: 65%;
-    margin: 0 auto;
-    margin-top: 2rem;
+    gap: 2rem;
+    width: 65%;
+    margin: 2rem auto 0;
 }
 
 .column {
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
+    min-width: 0;
 }
 
 .textGrid .column:last-child {
@@ -66,85 +77,144 @@
 }
 
 .column p {
+    margin: 0;
     color: var(--color-brand-basalt-grey);
-    font-size: clamp(0.95rem, 1.2vw, 1.0625rem);
-    line-height: 1.65;
+    font-size: clamp(0.875rem, 0.9vw, 1rem);
+    line-height: 1.55;
 }
 
 .divider {
     display: flex;
     align-self: stretch;
     justify-content: center;
+    min-height: 5rem;
 }
 
 .dividerMarker {
     position: relative;
     width: 1px;
     height: 100%;
-    background: color-mix(in srgb, var(--color-brand-basalt-grey) 45%, transparent);
+    background: color-mix(in srgb,
+            var(--color-brand-basalt-grey) 45%,
+            transparent);
 }
 
 .dividerMarker::before {
-    content: "";
     position: absolute;
     top: 50%;
     left: 50%;
     width: 0.5rem;
     height: 0.5rem;
-    background: var(--color-brand-living-green);
     border-radius: 50%;
+    background: var(--color-brand-living-green);
+    content: "";
     transform: translate(-50%, -50%);
 }
 
 .sameField {
-    margin: 0 auto;
-    margin-top: 2rem;
+    margin: 1.5rem 0 0;
     color: var(--color-brand-soil-brown);
     font-family: var(--font-family-heading);
-    font-size: clamp(0.9rem, 1.6vw, 1.125rem);
+    font-size: clamp(0.9rem, 1.2vw, 1.125rem);
     font-weight: 600;
     letter-spacing: 0.1em;
     text-align: center;
     text-transform: uppercase;
 }
 
-.visualStage {
-    width: 100vw;
-    margin-top: clamp(1.5rem, 4vw, 3rem);
-    margin-left: calc(50% - 50vw);
-}
+/* BOTTOM STATEMENT */
 
-.artwork {
-    display: block;
-    width: 100%;
-    height: auto;
+.bottomContent {
+    @include mixins.content-container;
 }
 
 .conclusion {
-    margin-top: 10rem;
-    padding: clamp(2rem, 5vw, 4rem) 0 clamp(4rem, 9vw, 8rem);
+    margin: 0;
+    padding: 1.5rem 0;
     border-top: 1px solid var(--color-brand-soil-brown);
     color: var(--color-brand-soil-brown);
     font-family: var(--font-family-heading);
-    font-size: clamp(1.5rem, 3.4vw, 3rem);
+    font-size: clamp(1.25rem, 2.4vw, 2.25rem);
     font-weight: 500;
     line-height: 1.15;
     text-align: center;
     text-transform: uppercase;
 }
 
-@media (max-width: 700px) {
-    .inner:first-of-type {
+/* DESKTOP COMPOSITION */
+
+@media (min-width: 1440px) {
+    .artworkStage {
+        /* This is the element that establishes section height. */
+        width: 100%;
+    }
+
+    .contentLayer {
+        /* Overlay the content without changing the image's height. */
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .mainContent {
+        padding-top: clamp(3rem, 3.5vw, 4.5rem);
+    }
+
+    .headline {
+        max-width: 22ch;
+    }
+
+    .textGrid {
+        width: 65%;
+        margin-top: clamp(2rem, 2.5vw, 2.75rem);
+    }
+
+    .sameField {
+        margin-top: clamp(1rem, 1.5vw, 1.5rem);
+    }
+
+    .bottomContent {
+        position: absolute;
+        right: 0;
+        bottom: 1%;
+        left: 0;
+    }
+
+    .conclusion {
+        padding: 1rem 0;
+        border-top: 0;
+    }
+}
+
+/* Existing smaller-screen behaviour will be refined later. */
+
+@media (max-width: 1439px) {
+    .section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contentLayer {
+        order: 1;
+    }
+
+    .artworkStage {
+        order: 2;
+    }
+
+    .mainContent {
         padding-top: var(--space-16);
     }
 
     .headline {
         max-width: 18ch;
-        font-size: clamp(1.75rem, 8vw, 2.5rem);
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
     }
 
     .textGrid {
-        grid-template-columns: 1fr;
+        width: 100%;
+        grid-template-columns: minmax(0, 1fr);
         gap: var(--space-6);
         margin-top: var(--space-12);
     }
@@ -156,6 +226,7 @@
 
     .divider {
         justify-content: flex-start;
+        min-height: 0;
     }
 
     .dividerMarker {
@@ -164,41 +235,17 @@
     }
 
     .dividerMarker::before {
+        top: 50%;
         left: 0;
-        transform: translate(0, -50%);
+        transform: translateY(-50%);
     }
 
-    .visualStage {
+    .sameField {
         margin-top: var(--space-8);
     }
 
     .conclusion {
         margin-top: 2rem;
-        font-size: clamp(1.375rem, 6vw, 1.75rem);
-    }
-}
-
-@media (min-width: 1440px) {
-    .section {
-        aspect-ratio: 1672 / 941;
-    }
-
-    .visualStage {
-        position: absolute;
-        z-index: 0;
-        inset: 0;
-        width: auto;
-        margin: 0;
-    }
-
-    .visualStage picture,
-    .artwork {
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
-
-    .artwork {
-        object-fit: contain;
+        font-size: clamp(1.375rem, 4vw, 1.75rem);
     }
 }
