@@ -1,0 +1,486 @@
+.page {
+    background: var(--color-brand-fossil-light);
+    color: var(--color-brand-carbon-black);
+    overflow-x: clip;
+}
+
+.container {
+    width: min(100% - 10vw, 1440px);
+    margin-inline: auto;
+}
+
+.eyebrow {
+    margin: 0;
+    color: var(--color-brand-living-green);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+/* INTRO */
+
+.intro {
+    padding-block: clamp(5rem, 10vw, 10rem) clamp(4rem, 7vw, 7rem);
+}
+
+.introGrid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: end;
+    gap: clamp(3rem, 8vw, 9rem);
+    margin-top: clamp(2rem, 5vw, 5rem);
+}
+
+.heading {
+    max-width: 11ch;
+    margin: 0;
+    font-family: var(--font-sora);
+    font-size: clamp(3.5rem, 7.5vw, 7.5rem);
+    font-weight: 500;
+    line-height: 0.98;
+    letter-spacing: -0.065em;
+
+    span {
+        color: var(--color-brand-living-green);
+        font-style: italic;
+    }
+}
+
+.introContent {
+    max-width: 440px;
+    padding-bottom: 0.5rem;
+
+    p {
+        margin: 0;
+        color: var(--color-brand-basalt-grey);
+        font-size: clamp(0.95rem, 1.15vw, 1.1rem);
+        line-height: 1.75;
+
+        &+p {
+            margin-top: 1.2rem;
+        }
+    }
+}
+
+/* FEATURED VISUAL */
+
+.featured {
+    background: var(--color-brand-carbon-black);
+    color: var(--color-brand-fossil-light);
+}
+
+.featuredVisual {
+    position: relative;
+    min-height: clamp(420px, 57vw, 760px);
+    overflow: hidden;
+    isolation: isolate;
+    background:
+        radial-gradient(ellipse at 50% 85%,
+            rgba(102, 124, 76, 0.22),
+            transparent 55%),
+        #151714;
+}
+
+.visualGrid {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.15;
+    background-image:
+        linear-gradient(rgba(244, 245, 240, 0.15) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
+            rgba(244, 245, 240, 0.15) 1px,
+            transparent 1px);
+    background-size: 70px 70px;
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+
+.visualLabel {
+    position: absolute;
+    top: clamp(1.5rem, 4vw, 4rem);
+    left: 5vw;
+    right: 5vw;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: rgba(244, 245, 240, 0.65);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+}
+
+.soilArtwork {
+    position: absolute;
+    inset: 10% 0 5%;
+    z-index: 1;
+
+    img {
+        object-fit: contain;
+        object-position: center;
+    }
+}
+
+.visualCaption {
+    position: absolute;
+    right: 5vw;
+    bottom: clamp(1.5rem, 4vw, 4rem);
+    left: 5vw;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: rgba(244, 245, 240, 0.7);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+}
+
+.captionLine {
+    width: clamp(30px, 8vw, 120px);
+    height: 1px;
+    background: var(--color-brand-living-green);
+}
+
+.featuredContent {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(3rem, 8vw, 9rem);
+    width: min(100% - 10vw, 1440px);
+    margin-inline: auto;
+    padding-block: clamp(4rem, 8vw, 8rem);
+
+    h2 {
+        margin: 1.2rem 0 0;
+        font-family: var(--font-sora);
+        font-size: clamp(2.5rem, 4.5vw, 5rem);
+        font-weight: 500;
+        line-height: 1.05;
+        letter-spacing: -0.05em;
+    }
+}
+
+.featuredDescription {
+    align-self: end;
+    max-width: 460px;
+
+    p {
+        margin: 0;
+        color: rgba(244, 245, 240, 0.75);
+        line-height: 1.8;
+    }
+}
+
+.placeholderNote {
+    margin-top: 1.5rem !important;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(244, 245, 240, 0.2);
+    color: rgba(244, 245, 240, 0.48) !important;
+    font-size: 0.85rem;
+}
+
+/* PATHWAYS */
+
+.pathways {
+    padding-block: clamp(5rem, 9vw, 9rem);
+}
+
+.sectionHeading {
+    display: grid;
+    grid-template-columns: 1fr 0.7fr;
+    align-items: end;
+    gap: 3rem;
+    margin-bottom: clamp(3rem, 6vw, 6rem);
+
+    h2 {
+        margin: 1.2rem 0 0;
+        font-family: var(--font-sora);
+        font-size: clamp(2.5rem, 5vw, 5rem);
+        font-weight: 500;
+        line-height: 1.05;
+        letter-spacing: -0.05em;
+    }
+
+    >p {
+        max-width: 420px;
+        margin: 0 0 0.3rem;
+        color: var(--color-brand-basalt-grey);
+        line-height: 1.8;
+    }
+}
+
+.pathwayGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+.pathwayCard {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    border-top: 1px solid rgba(119, 122, 114, 0.55);
+}
+
+.pathwayVisual {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1.65;
+    margin-top: 1.5rem;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at center,
+            rgba(102, 124, 76, 0.13),
+            transparent 65%);
+
+    img {
+        object-fit: contain;
+        padding: 8%;
+        transition: transform 500ms ease;
+    }
+}
+
+.pathwayCard:hover .pathwayVisual img {
+    transform: scale(1.04);
+}
+
+.cardIndex {
+    position: absolute;
+    top: 0.5rem;
+    left: 0;
+    z-index: 2;
+    color: var(--color-brand-basalt-grey);
+    font-size: 0.65rem;
+    letter-spacing: 0.13em;
+}
+
+/* PATHWAY CONTENT */
+
+
+
+/* TEXT LINKS */
+
+.textLink,
+.contactLink {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--color-brand-living-green);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    span {
+        font-size: 1.3rem;
+        transition: transform 180ms ease;
+    }
+
+    &:hover span {
+        transform: translate(3px, -3px);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--color-brand-living-green);
+        outline-offset: 5px;
+    }
+}
+
+/* UPCOMING */
+
+.upcoming {
+    padding-block: clamp(4rem, 8vw, 8rem);
+    background: #e9ebe3;
+}
+
+.upcomingInner {
+    display: grid;
+    grid-template-columns: 1fr 0.7fr;
+    align-items: end;
+    gap: 3rem;
+
+    h2 {
+        margin: 1.2rem 0 0;
+        font-family: var(--font-sora);
+        font-size: clamp(2.5rem, 5vw, 5rem);
+        font-weight: 500;
+        line-height: 1.05;
+        letter-spacing: -0.05em;
+    }
+}
+
+.upcomingContent {
+    max-width: 440px;
+
+    p {
+        margin: 0 0 2rem;
+        color: var(--color-brand-basalt-grey);
+        line-height: 1.8;
+    }
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+    .introGrid,
+    .featuredContent,
+    .sectionHeading,
+    .upcomingInner {
+        grid-template-columns: 1fr;
+    }
+
+    .introContent,
+    .featuredDescription,
+    .upcomingContent {
+        max-width: 600px;
+    }
+
+    .featuredVisual {
+        min-height: 520px;
+    }
+
+
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .container,
+    .featuredContent {
+        width: min(100% - 2.5rem, 1440px);
+    }
+
+    .intro {
+        padding-block: 4rem 3.5rem;
+    }
+
+    .introGrid {
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .heading {
+        font-size: clamp(3rem, 13vw, 5rem);
+    }
+
+    .featuredVisual {
+        min-height: 390px;
+    }
+
+    .visualLabel {
+        font-size: 0.55rem;
+    }
+
+    .soilArtwork {
+        inset: 15% -15% 10%;
+    }
+
+    .visualCaption {
+        font-size: 0.52rem;
+    }
+
+    .featuredContent {
+        gap: 2rem;
+        padding-block: 3.5rem;
+    }
+
+    .featuredContent h2,
+    .sectionHeading h2,
+    .upcomingInner h2 {
+        font-size: clamp(2.4rem, 10vw, 3.5rem);
+    }
+
+    .pathways {
+        padding-block: 4rem;
+    }
+
+    .sectionHeading {
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .pathwayGrid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .pathwayVisual {
+        aspect-ratio: 1.4;
+    }
+
+    .pathwayInfo {
+        gap: 1.5rem;
+    }
+
+    .pathwayInfo h3 {
+        font-size: 1.8rem;
+    }
+
+    .pathwayAction {
+        width: 100%;
+    }
+
+    .pathwayAction>a {
+        width: 100%;
+    }
+
+    .upcoming {
+        padding-block: 4rem;
+    }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .pathwayVisual img,
+    .textLink span,
+    .contactLink span {
+        transition: none;
+    }
+
+    .pathwayCard:hover .pathwayVisual img {
+        transform: none;
+    }
+}
+
+/* LUCIDE ICONS */
+
+.projectIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin: 1.25rem 0;
+    border: 1px solid rgba(102, 124, 76, 0.35);
+    border-radius: 50%;
+    color: #667c4c;
+    background: rgba(102, 124, 76, 0.07);
+}
+
+.contactLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.contactLink svg {
+    transition: transform 0.25s ease;
+}
+
+.contactLink:hover svg {
+    transform: translate(3px, -3px);
+}
+
+@media (max-width: 700px) {
+    .projectIcon {
+        width: 43px;
+        height: 43px;
+    }
+}

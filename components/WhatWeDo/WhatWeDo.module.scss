@@ -227,3 +227,17 @@
         transition: none;
     }
 }
+
+/* Pathway icon */
+.pathwayIcon {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+    color: var(--color-brand-living-green);
+}
+
+.pathwayIcon svg {
+    display: block;
+    flex: 0 0 auto;
+}

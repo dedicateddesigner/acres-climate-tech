@@ -1,0 +1,438 @@
+[1mdiff --git a/components/Background/Background.module.scss b/components/Background/Background.module.scss[m
+[1mindex e50fd00..d5d4f5d 100644[m
+[1m--- a/components/Background/Background.module.scss[m
+[1m+++ b/components/Background/Background.module.scss[m
+[36m@@ -7,29 +7,40 @@[m
+     color: var(--color-brand-carbon-black);[m
+ }[m
+ [m
+[31m-.inner {[m
+[31m-    position: relative;[m
+[31m-    z-index: 1;[m
+[31m-    @include mixins.content-container;[m
+[32m+[m[32m/* ARTWORK[m
+[32m+[m[32m   The image stays in normal document flow.[m
+[32m+[m[32m   Its intrinsic ratio determines the section height. */[m
+[32m+[m
+[32m+[m[32m.artworkStage {[m
+[32m+[m[32m    width: 100%;[m
+ }[m
+ [m
+[31m-.inner:first-of-type {[m
+[31m-    padding-top:3rem;[m
+[32m+[m[32m.artworkStage picture {[m
+[32m+[m[32m    display: block;[m
+[32m+[m[32m    width: 100%;[m
+ }[m
+ [m
+[31m-.index {[m
+[31m-    margin: 0;[m
+[31m-    color: var(--color-brand-living-green);[m
+[31m-    font-size: var(--font-size-small);[m
+[31m-    font-weight: 600;[m
+[31m-    letter-spacing: 0.08em;[m
+[31m-    text-transform: uppercase;[m
+[31m-    text-align: center;[m
+[32m+[m[32m.artwork {[m
+[32m+[m[32m    display: block;[m
+[32m+[m[32m    width: 100%;[m
+[32m+[m[32m    height: auto;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m/* CONTENT[m
+[32m+[m[32m   The max-width containers are independent of the artwork width. */[m
+[32m+[m
+[32m+[m[32m.contentLayer {[m
+[32m+[m[32m    position: relative;[m
+[32m+[m[32m    z-index: 1;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.mainContent {[m
+[32m+[m[32m    @include mixins.content-container;[m
+ }[m
+ [m
+ .headline {[m
+[31m-    max-width: 26ch;[m
+[31m-    margin: var(--space-4) auto 0;[m
+[32m+[m[32m    max-width: 22ch;[m
+[32m+[m[32m    margin: 0 auto;[m
+     font-size: clamp(1.875rem, 3.6vw, 3.5rem);[m
+     font-weight: 500;[m
+     line-height: 1.1;[m
+[36m@@ -38,18 +49,18 @@[m
+ [m
+ .textGrid {[m
+     display: grid;[m
+[31m-    grid-template-columns: 1fr auto 1fr;[m
+[31m-    gap:2rem;[m
+[32m+[m[32m    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);[m
+     align-items: start;[m
+[31m-    max-width: 65%;[m
+[31m-    margin: 0 auto;[m
+[31m-    margin-top: 2rem;[m
+[32m+[m[32m    gap: 2rem;[m
+[32m+[m[32m    width: 65%;[m
+[32m+[m[32m    margin: 2rem auto 0;[m
+ }[m
+ [m
+ .column {[m
+     display: flex;[m
+     flex-direction: column;[m
+     gap: var(--space-2);[m
+[32m+[m[32m    min-width: 0;[m
+ }[m
+ [m
+ .textGrid .column:last-child {[m
+[36m@@ -66,85 +77,144 @@[m
+ }[m
+ [m
+ .column p {[m
+[32m+[m[32m    margin: 0;[m
+     color: var(--color-brand-basalt-grey);[m
+[31m-    font-size: clamp(0.95rem, 1.2vw, 1.0625rem);[m
+[31m-    line-height: 1.65;[m
+[32m+[m[32m    font-size: clamp(0.875rem, 0.9vw, 1rem);[m
+[32m+[m[32m    line-height: 1.55;[m
+ }[m
+ [m
+ .divider {[m
+     display: flex;[m
+     align-self: stretch;[m
+     justify-content: center;[m
+[32m+[m[32m    min-height: 5rem;[m
+ }[m
+ [m
+ .dividerMarker {[m
+     position: relative;[m
+     width: 1px;[m
+     height: 100%;[m
+[31m-    background: color-mix(in srgb, var(--color-brand-basalt-grey) 45%, transparent);[m
+[32m+[m[32m    background: color-mix(in srgb,[m
+[32m+[m[32m            var(--color-brand-basalt-grey) 45%,[m
+[32m+[m[32m            transparent);[m
+ }[m
+ [m
+ .dividerMarker::before {[m
+[31m-    content: "";[m
+     position: absolute;[m
+     top: 50%;[m
+     left: 50%;[m
+     width: 0.5rem;[m
+     height: 0.5rem;[m
+[31m-    background: var(--color-brand-living-green);[m
+     border-radius: 50%;[m
+[32m+[m[32m    background: var(--color-brand-living-green);[m
+[32m+[m[32m    content: "";[m
+     transform: translate(-50%, -50%);[m
+ }[m
+ [m
+ .sameField {[m
+[31m-    margin: 0 auto;[m
+[31m-    margin-top: 2rem;[m
+[32m+[m[32m    margin: 1.5rem 0 0;[m
+     color: var(--color-brand-soil-brown);[m
+     font-family: var(--font-family-heading);[m
+[31m-    font-size: clamp(0.9rem, 1.6vw, 1.125rem);[m
+[32m+[m[32m    font-size: clamp(0.9rem, 1.2vw, 1.125rem);[m
+     font-weight: 600;[m
+     letter-spacing: 0.1em;[m
+     text-align: center;[m
+     text-transform: uppercase;[m
+ }[m
+ [m
+[31m-.visualStage {[m
+[31m-    width: 100vw;[m
+[31m-    margin-top: clamp(1.5rem, 4vw, 3rem);[m
+[31m-    margin-left: calc(50% - 50vw);[m
+[31m-}[m
+[32m+[m[32m/* BOTTOM STATEMENT */[m
+ [m
+[31m-.artwork {[m
+[31m-    display: block;[m
+[31m-    width: 100%;[m
+[31m-    height: auto;[m
+[32m+[m[32m.bottomContent {[m
+[32m+[m[32m    @include mixins.content-container;[m
+ }[m
+ [m
+ .conclusion {[m
+[31m-    margin-top: 10rem;[m
+[31m-    padding: clamp(2rem, 5vw, 4rem) 0 clamp(4rem, 9vw, 8rem);[m
+[32m+[m[32m    margin: 0;[m
+[32m+[m[32m    padding: 1.5rem 0;[m
+     border-top: 1px solid var(--color-brand-soil-brown);[m
+     color: var(--color-brand-soil-brown);[m
+     font-family: var(--font-family-heading);[m
+[31m-    font-size: clamp(1.5rem, 3.4vw, 3rem);[m
+[32m+[m[32m    font-size: clamp(1.25rem, 2.4vw, 2.25rem);[m
+     font-weight: 500;[m
+     line-height: 1.15;[m
+     text-align: center;[m
+     text-transform: uppercase;[m
+ }[m
+ [m
+[31m-@media (max-width: 700px) {[m
+[31m-    .inner:first-of-type {[m
+[32m+[m[32m/* DESKTOP COMPOSITION */[m
+[32m+[m
+[32m+[m[32m@media (min-width: 1440px) {[m
+[32m+[m[32m    .artworkStage {[m
+[32m+[m[32m        /* This is the element that establishes section height. */[m
+[32m+[m[32m        width: 100%;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    .contentLayer {[m
+[32m+[m[32m        /* Overlay the content without changing the image's height. */[m
+[32m+[m[32m        position: absolute;[m
+[32m+[m[32m        inset: 0;[m
+[32m+[m[32m        z-index: 1;[m
+[32m+[m[32m        pointer-events: none;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    .mainContent {[m
+[32m+[m[32m        padding-top: clamp(3rem, 3.5vw, 4.5rem);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    .headline {[m
+[32m+[m[32m        max-width: 22ch;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    .textGrid {[m
+[32m+[m[32m        width: 65%;[m
+[32m+[m[32m        margin-top: clamp(2rem, 2.5vw, 2.75rem);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    .sameField {[m
+[32m+[m[32m        margin-top: clamp(1rem, 1.5vw, 1.5rem);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    .bottomContent {[m
+[32m+[m[32m        position: absolute;[m
+[32m+[m[32m        right: 0;[m
+[32m+[m[32m        bottom: 1%;[m
+[32m+[m[32m        left: 0;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    .conclusion {[m
+[32m+[m[32m        padding: 1rem 0;[m
+[32m+[m[32m        border-top: 0;[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m/* Existing smaller-screen behaviour will be refined later. */[m
+[32m+[m
+[32m+[m[32m@media (max-width: 1439px) {[m
+[32m+[m[32m    .section {[m
+[32m+[m[32m        display: flex;[m
+[32m+[m[32m        flex-direction: column;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    .contentLayer {[m
+[32m+[m[32m        order: 1;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    .artworkStage {[m
+[32m+[m[32m        order: 2;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    .mainContent {[m
+         padding-top: var(--space-16);[m
+     }[m
+ [m
+     .headline {[m
+         max-width: 18ch;[m
+[31m-        font-size: clamp(1.75rem, 8vw, 2.5rem);[m
+[32m+[m[32m        font-size: clamp(1.75rem, 5vw, 2.5rem);[m
+     }[m
+ [m
+     .textGrid {[m
+[31m-        grid-template-columns: 1fr;[m
+[32m+[m[32m        width: 100%;[m
+[32m+[m[32m        grid-template-columns: minmax(0, 1fr);[m
+         gap: var(--space-6);[m
+         margin-top: var(--space-12);[m
+     }[m
+[36m@@ -156,6 +226,7 @@[m
+ [m
+     .divider {[m
+         justify-content: flex-start;[m
+[32m+[m[32m        min-height: 0;[m
+     }[m
+ [m
+     .dividerMarker {[m
+[36m@@ -164,41 +235,17 @@[m
+     }[m
+ [m
+     .dividerMarker::before {[m
+[32m+[m[32m        top: 50%;[m
+         left: 0;[m
+[31m-        transform: translate(0, -50%);[m
+[32m+[m[32m        transform: translateY(-50%);[m
+     }[m
+ [m
+[31m-    .visualStage {[m
+[32m+[m[32m    .sameField {[m
+         margin-top: var(--space-8);[m
+     }[m
+ [m
+     .conclusion {[m
+         margin-top: 2rem;[m
+[31m-        font-size: clamp(1.375rem, 6vw, 1.75rem);[m
+[32m+[m[32m        font-size: clamp(1.375rem, 4vw, 1.75rem);[m
+     }[m
+[31m-}[m
+[31m-[m
+[31m-@media (min-width: 1440px) {[m
+[31m-    .section {[m
+[31m-        aspect-ratio: 1672 / 941;[m
+[31m-    }[m
+[31m-[m
+[31m-    .visualStage {[m
+[31m-        position: absolute;[m
+[31m-        z-index: 0;[m
+[31m-        inset: 0;[m
+[31m-        width: auto;[m
+[31m-        margin: 0;[m
+[31m-    }[m
+[31m-[m
+[31m-    .visualStage picture,[m
+[31m-    .artwork {[m
+[31m-        display: block;[m
+[31m-        width: 100%;[m
+[31m-        height: 100%;[m
+[31m-    }[m
+[31m-[m
+[31m-    .artwork {[m
+[31m-        object-fit: contain;[m
+[31m-    }[m
+[31m-}[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/components/Background/Background.tsx b/components/Background/Background.tsx[m
+[1mindex 0ab6839..1df8664 100644[m
+[1m--- a/components/Background/Background.tsx[m
+[1m+++ b/components/Background/Background.tsx[m
+[36m@@ -1,51 +1,91 @@[m
+[32m+[m
+ import styles from "./Background.module.scss";[m
+ [m
+[31m-const asset = (name: string) => `/assets/background/${encodeURIComponent(name)}`;[m
+[32m+[m[32mconst asset = (name: string) =>[m
+[32m+[m[32m  `/assets/background/${encodeURIComponent(name)}`;[m
+ [m
+ export default function Background() {[m
+   return ([m
+[31m-    <section className={styles.section} aria-labelledby="background-title">[m
+[31m-      <div className={styles.inner}>[m
+[31m-        <h2 id="background-title" className={styles.headline}>[m
+[31m-          A Climate Problem — and a Livelihood Problem — That Meet in the Same Field[m
+[31m-        </h2>[m
+[31m-[m
+[31m-        <div className={styles.textGrid}>[m
+[31m-          <div className={styles.column}>[m
+[31m-            <span className={styles.columnLabel}>Global Commitment</span>[m
+[31m-            <p>Globally, the effects of climate change are no longer theoretical — they&apos;re visible in shifting monsoons, degrading soil, and volatile yields. Under the Paris Agreement, India — along with many other signatory nations — has committed to reducing the greenhouse gas intensity of its economy, with clear targets set for industry over the next several years.</p>[m
+[31m-          </div>[m
+[31m-[m
+[31m-          <div className={styles.divider} aria-hidden="true">[m
+[31m-            <span className={styles.dividerMarker} />[m
+[31m-          </div>[m
+[31m-[m
+[31m-          <div className={styles.column}>[m
+[31m-            <span className={styles.columnLabel}>Farmer Reality</span>[m
+[31m-            <p>At the same time, farmers across India face a different but connected challenge: how to protect soil fertility and secure additional, reliable income in the face of increasing climate variability.</p>[m
+[31m-          </div>[m
+[31m-        </div>[m
+[31m-[m
+[31m-        <p className={styles.sameField}>Same Field</p>[m
+[31m-      </div>[m
+[31m-[m
+[31m-      <div className={styles.visualStage}>[m
+[32m+[m[32m    <section[m
+[32m+[m[32m      className={styles.section}[m
+[32m+[m[32m      aria-labelledby="background-title"[m
+[32m+[m[32m    >[m
+[32m+[m[32m      {/* Layer 1: artwork establishes the section's natural height */}[m
+[32m+[m[32m      <div className={styles.artworkStage} aria-hidden="true">[m
+         <picture>[m
+[31m-          <source media="(min-width: 1440px)" srcSet={asset("Climate Problem-1440p.webp")} />[m
+[31m-          <source media="(min-width: 1024px)" srcSet={asset("Climate Problem-1024p.webp")} />[m
+[32m+[m[32m          <source[m
+[32m+[m[32m            media="(min-width: 1440px)"[m
+[32m+[m[32m            srcSet={asset("Climate Problem-1440p.webp")}[m
+[32m+[m[32m          />[m
+[32m+[m[32m          <source[m
+[32m+[m[32m            media="(min-width: 1024px)"[m
+[32m+[m[32m            srcSet={asset("Climate Problem-1024p.webp")}[m
+[32m+[m[32m          />[m
+           <img[m
+             className={styles.artwork}[m
+             src={asset("Climate Problem-768p.webp")}[m
+             alt=""[m
+             width={1040}[m
+             height={941}[m
+[31m-            loading="lazy"[m
+           />[m
+         </picture>[m
+       </div>[m
+ [m
+[31m-      <div className={styles.inner}>[m
+[31m-        <p className={styles.conclusion}>Two pressures. One shared solution.</p>[m
+[32m+[m[32m      {/* Layer 2: main content, positioned independently */}[m
+[32m+[m[32m      <div className={styles.contentLayer}>[m
+[32m+[m[32m        <div className={styles.mainContent}>[m
+[32m+[m[32m          <h2[m
+[32m+[m[32m            id="background-title"[m
+[32m+[m[32m            className={styles.headline}[m
+[32m+[m[32m          >[m
+[32m+[m[32m            A Climate Problem — and a Livelihood Problem — That Meet[m
+[32m+[m[32m            in the Same Field[m
+[32m+[m[32m          </h2>[m
+[32m+[m
+[32m+[m[32m          <div className={styles.textGrid}>[m
+[32m+[m[32m            <div className={styles.column}>[m
+[32m+[m[32m              <span className={styles.columnLabel}>[m
+[32m+[m[32m                Global Commitment[m
+[32m+[m[32m              </span>[m
+[32m+[m
+[32m+[m[32m              <p>[m
+[32m+[m[32m                Globally, the effects of climate change are no longer[m
+[32m+[m[32m                theoretical — they&apos;re visible in shifting monsoons,[m
+[32m+[m[32m                degrading soil, and volatile yields. Under the Paris[m
+[32m+[m[32m                Agreement, India — along with many other signatory[m
+[32m+[m[32m                nations — has committed to reducing the greenhouse gas[m
+[32m+[m[32m                intensity of its economy, with clear targets set for[m
+[32m+[m[32m                industry over the next several years.[m
+[32m+[m[32m              </p>[m
+[32m+[m[32m            </div>[m
+[32m+[m
+[32m+[m[32m            <div className={styles.divider} aria-hidden="true">[m
+[32m+[m[32m              <span className={styles.dividerMarker} />[m
+[32m+[m[32m            </div>[m
+[32m+[m
+[32m+[m[32m            <div className={styles.column}>[m
+[32m+[m[32m              <span className={styles.columnLabel}>[m
+[32m+[m[32m                Farmer Reality[m
+[32m+[m[32m              </span>[m
+[32m+[m
+[32m+[m[32m              <p>[m
+[32m+[m[32m                At the same time, farmers across India face a different[m
+[32m+[m[32m                but connected challenge: how to protect soil fertility[m
+[32m+[m[32m                and secure additional, reliable income in the face of[m
+[32m+[m[32m                increasing climate variability.[m
+[32m+[m[32m              </p>[m
+[32m+[m[32m            </div>[m
+[32m+[m[32m          </div>[m
+[32m+[m
+[32m+[m[32m          <p className={styles.sameField}>Same Field</p>[m
+[32m+[m[32m        </div>[m
+[32m+[m
+[32m+[m[32m        {/* Layer 3: bottom statement */}[m
+[32m+[m[32m        <div className={styles.bottomContent}>[m
+[32m+[m[32m          <p className={styles.conclusion}>[m
+[32m+[m[32m            Two pressures. One shared solution.[m
+[32m+[m[32m          </p>[m
+[32m+[m[32m        </div>[m
+       </div>[m
+     </section>[m
+   );[m

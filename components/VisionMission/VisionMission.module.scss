@@ -1,0 +1,214 @@
+@use "../../styles/mixins";
+
+.section {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(5rem, 10vw, 10rem);
+    background: var(--color-brand-fossil-light);
+    color: var(--color-brand-carbon-black);
+}
+
+.container {
+    @include mixins.content-container;
+}
+
+/* Section introduction */
+
+.header {
+    max-width: 850px;
+    margin-bottom: clamp(4rem, 8vw, 8rem);
+
+    h2 {
+        margin: 1.5rem 0 0;
+        font-size: clamp(3rem, 6.5vw, 6.5rem);
+        font-weight: 500;
+        line-height: 0.98;
+        letter-spacing: -0.06em;
+
+        span {
+            color: var(--color-brand-living-green);
+        }
+    }
+}
+
+.eyebrow {
+    margin: 0;
+    color: var(--color-brand-living-green);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+/* Vision and Mission layout */
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid rgba(119, 122, 114, 0.5);
+    border-bottom: 1px solid rgba(119, 122, 114, 0.5);
+}
+
+.vision,
+.mission {
+    position: relative;
+    display: flex;
+    min-height: 480px;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(2rem, 3.5vw, 3.5rem);
+    overflow: hidden;
+
+    h3 {
+        position: relative;
+        z-index: 2;
+        max-width: 22ch;
+        margin: 3rem 0 0;
+        font-size: clamp(1.5rem, 2.3vw, 2rem);
+        font-weight: 500;
+        line-height: 1.25;
+        letter-spacing: -0.035em;
+    }
+}
+
+.mission {
+    border-left: 1px solid rgba(119, 122, 114, 0.5);
+    background: rgba(119, 122, 114, 0.055);
+}
+
+/* Small section labels */
+
+.sectionLabel {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--color-brand-basalt-grey);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+
+    span:first-child {
+        color: var(--color-brand-living-green);
+    }
+}
+
+/* Background artwork */
+
+.visionVisual,
+.missionVisual {
+    position: absolute;
+    z-index: 1;
+    width: 65%;
+    aspect-ratio: 1;
+    pointer-events: none;
+
+    img {
+        object-fit: contain;
+        opacity: 0.13;
+    }
+}
+
+.visionVisual {
+    top: 12%;
+    right: -12%;
+}
+
+.missionVisual {
+    bottom: -15%;
+    left: -12%;
+
+    img {
+        opacity: 0.17;
+    }
+}
+
+/* Brand footer */
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+    color: var(--color-brand-basalt-grey);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+
+    .vision,
+    .mission {
+        min-height: 420px;
+        padding: 2rem;
+    }
+
+    .vision h3,
+    .mission h3 {
+        font-size: clamp(1.4rem, 2.5vw, 1.75rem);
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+    .section {
+        padding-block: 4rem;
+    }
+
+    .header {
+        margin-bottom: 3rem;
+
+        h2 {
+            font-size: clamp(2.75rem, 11vw, 4rem);
+        }
+    }
+
+    .content {
+        grid-template-columns: 1fr;
+    }
+
+    .vision,
+    .mission {
+        min-height: 360px;
+        padding: 1.5rem;
+
+        h3 {
+            max-width: 24ch;
+            margin-top: 3rem;
+            font-size: 1.5rem;
+            line-height: 1.3;
+        }
+    }
+
+    .mission {
+        border-top: 1px solid rgba(119, 122, 114, 0.5);
+        border-left: 0;
+    }
+
+    .visionVisual,
+    .missionVisual {
+        width: 75%;
+    }
+
+    .footer {
+        font-size: 0.55rem;
+    }
+}
+
+/* Small purpose icons */
+.labelIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-brand-living-green);
+}
+
+.labelIcon svg {
+    display: block;
+    flex: 0 0 auto;
+}

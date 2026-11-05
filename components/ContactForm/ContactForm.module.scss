@@ -1,0 +1,113 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.fieldRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+
+    label {
+        color: var(--color-brand-carbon-black);
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        min-width: 0;
+        border: 1px solid #d9ddd4;
+        border-radius: 0;
+        outline: none;
+        background: #fff;
+        color: var(--color-brand-carbon-black);
+        font: inherit;
+        font-size: 0.85rem;
+        transition: border-color 200ms ease;
+    }
+
+    input,
+    select {
+        min-height: 52px;
+        padding: 0 1rem;
+    }
+
+    textarea {
+        min-height: 140px;
+        padding: 1rem;
+        resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: var(--color-brand-living-green);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        color: #999d95;
+    }
+}
+
+.submit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 56px;
+    padding: 0 1.5rem;
+    border: 1px solid var(--color-brand-carbon-black);
+    background: var(--color-brand-carbon-black);
+    color: var(--color-brand-fossil-light);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 200ms ease, color 200ms ease;
+
+    &:hover {
+        background: var(--color-brand-living-green);
+        border-color: var(--color-brand-living-green);
+    }
+}
+
+.privacy {
+    margin: -0.5rem 0 0;
+    color: var(--color-brand-basalt-grey);
+    font-size: 0.72rem;
+    line-height: 1.6;
+}
+
+.status {
+    margin: 0;
+    color: var(--color-brand-living-green);
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+    .fieldRow {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .field input,
+    .field select,
+    .field textarea,
+    .submit {
+        transition: none;
+    }
+}

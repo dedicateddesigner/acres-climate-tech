@@ -5,7 +5,7 @@ import styles from "./Header.module.scss";
 const navigationItems = [
   { label: "What We Do", href: "/#what-we-do" },
   { label: "Our Approach", href: "/#our-approach" },
-  { label: "Projects", href: "/#projects" },
+  { label: "Projects", href: "/projects" },
   { label: "About", href: "/#about" },
 ];
 
@@ -36,7 +36,7 @@ export default function Header() {
           </ul>
         </nav>
 
-        <Link className={styles.cta} href="/#contact">
+        <Link className={styles.cta} href="/contact">
           Partner With Us
         </Link>
       </div>

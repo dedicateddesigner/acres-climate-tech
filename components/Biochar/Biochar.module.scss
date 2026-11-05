@@ -1,0 +1,411 @@
+@use "../../styles/mixins";
+
+.section {
+    position: relative;
+    overflow: clip;
+    padding-block: clamp(5rem, 9vw, 9rem);
+    background: var(--color-brand-fossil-light);
+    color: var(--color-brand-carbon-black);
+}
+
+.container {
+    @include mixins.content-container;
+}
+
+.intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+    gap: clamp(3rem, 8vw, 9rem);
+    align-items: start;
+}
+
+.eyebrow {
+    margin: 0;
+    color: var(--color-brand-living-green);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.title {
+    max-width: 9ch;
+    margin: 1.5rem 0 0;
+    font-size: clamp(3.5rem, 7vw, 7rem);
+    font-weight: 500;
+    line-height: 0.92;
+    letter-spacing: -0.065em;
+
+    span {
+        color: var(--color-brand-living-green);
+    }
+}
+
+.introCopy {
+    display: grid;
+    gap: 1.25rem;
+    padding-top: 2rem;
+
+    p {
+        margin: 0;
+        color: var(--color-brand-basalt-grey);
+        font-size: clamp(0.95rem, 1.1vw, 1.0625rem);
+        line-height: 1.8;
+    }
+}
+
+/* Transformation process */
+
+.process {
+    margin-top: clamp(6rem, 11vw, 11rem);
+}
+
+.processHeader {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(119, 122, 114, 0.45);
+}
+
+.processIntro {
+    margin: 0;
+    color: var(--color-brand-basalt-grey);
+    font-size: 0.9rem;
+}
+
+.processFlow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: start;
+    gap: clamp(1rem, 3vw, 3rem);
+    padding-block: 2.5rem;
+}
+
+.processStep {
+    .stepIndex {
+        display: block;
+        margin-bottom: 2.5rem;
+        color: var(--color-brand-soil-brown);
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+    }
+
+    h3 {
+        margin: 0;
+        font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+        font-weight: 500;
+        letter-spacing: -0.04em;
+    }
+
+    p {
+        max-width: 28ch;
+        margin: 0.8rem 0 0;
+        color: var(--color-brand-basalt-grey);
+        font-size: 0.9rem;
+        line-height: 1.65;
+    }
+}
+
+.processArrow {
+    padding-top: 3.5rem;
+    color: var(--color-brand-living-green);
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+/* 2.5D material experience */
+
+.experience {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    align-items: start;
+    gap: clamp(3rem, 7vw, 8rem);
+    margin-top: clamp(6rem, 12vw, 12rem);
+    padding-top: clamp(3rem, 6vw, 6rem);
+    border-top: 1px solid rgba(119, 122, 114, 0.45);
+}
+
+.experienceCopy {
+    h3 {
+        margin: 1.5rem 0 2rem;
+        font-size: clamp(2.75rem, 5vw, 5rem);
+        font-weight: 500;
+        line-height: 0.98;
+        letter-spacing: -0.055em;
+    }
+
+    >p:not(.eyebrow) {
+        max-width: 48ch;
+        margin: 0;
+        color: var(--color-brand-basalt-grey);
+        font-size: 0.95rem;
+        line-height: 1.8;
+    }
+}
+
+.storySteps {
+    display: grid;
+    gap: 0;
+    margin-top: 3rem;
+}
+
+.storyStep {
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: 1.5rem;
+    border-top: 1px solid rgba(119, 122, 114, 0.35);
+
+    >span {
+        color: var(--color-brand-living-green);
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+    }
+
+    h4 {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    p {
+        max-width: 38ch;
+        margin: 0.5rem 0 0;
+        color: var(--color-brand-basalt-grey);
+        font-size: 0.875rem;
+        line-height: 1.65;
+    }
+}
+
+.visualColumn {
+    position: sticky;
+    top: 8vh;
+    min-width: 0;
+}
+
+.visualPanel {
+    position: relative;
+    min-height: 620px;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 50% 55%,
+            rgba(118, 85, 61, 0.12),
+            transparent 65%);
+}
+
+.biocharVisual {
+    position: absolute;
+    z-index: 2;
+    inset: 8% 5% 15%;
+    will-change: transform;
+
+    img {
+        object-fit: contain;
+    }
+}
+
+.soilVisual {
+    position: absolute;
+    z-index: 3;
+    inset: 15% -8% 0;
+    opacity: 0;
+    pointer-events: none;
+    will-change: transform, opacity;
+
+    img {
+        object-fit: contain;
+    }
+}
+
+.particles {
+    position: absolute;
+    z-index: 1;
+    inset: 5%;
+    pointer-events: none;
+    will-change: transform;
+
+    &::before,
+    &::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-image: radial-gradient(circle,
+                rgba(21, 23, 20, 0.55) 1px,
+                transparent 2px);
+        background-size: 38px 38px;
+        mask-image: radial-gradient(ellipse, black 0%, transparent 68%);
+    }
+
+    &::after {
+        transform: translate(22px, 28px) scale(0.8);
+        opacity: 0.45;
+    }
+}
+
+.visualLabel {
+    position: absolute;
+    z-index: 4;
+    right: 1rem;
+    bottom: 1rem;
+    color: var(--color-brand-basalt-grey);
+    font-size: 0.625rem;
+    letter-spacing: 0.12em;
+}
+
+/* Closing statement */
+
+.conclusion {
+    margin-top: clamp(6rem, 12vw, 12rem);
+    padding-top: 2rem;
+    border-top: 1px solid rgba(119, 122, 114, 0.45);
+
+    h3 {
+        max-width: 22ch;
+        margin: 1.5rem 0 0;
+        font-size: clamp(2rem, 4vw, 4rem);
+        font-weight: 500;
+        line-height: 1.15;
+        letter-spacing: -0.045em;
+    }
+
+    h3 span {
+        color: var(--color-brand-living-green);
+    }
+}
+
+/* Tablet and mobile: static layout for now */
+
+@media (max-width: 1000px) {
+    .intro {
+        grid-template-columns: 1fr 0.9fr;
+        gap: 2.5rem;
+    }
+
+    .experience {
+        grid-template-columns: 1fr;
+    }
+
+    .visualColumn {
+        position: relative;
+        top: auto;
+        grid-row: 1;
+    }
+
+    .visualPanel {
+        min-height: 480px;
+    }
+
+    .soilVisual {
+        opacity: 1;
+    }
+
+    .biocharVisual {
+        opacity: 0.8;
+    }
+}
+
+@media (max-width: 700px) {
+    .section {
+        padding-block: 4rem;
+    }
+
+    .intro {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .title {
+        font-size: clamp(3.25rem, 13vw, 5rem);
+    }
+
+    .introCopy {
+        padding-top: 0;
+    }
+
+    .process {
+        margin-top: 5rem;
+    }
+
+    .processHeader {
+        display: block;
+    }
+
+    .processIntro {
+        margin-top: 0.75rem;
+    }
+
+    .processFlow {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .processStep {
+        display: grid;
+        grid-template-columns: 2rem minmax(0, 1fr);
+        column-gap: 1rem;
+
+        .stepIndex {
+            grid-row: span 2;
+            margin-bottom: 0;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+        }
+
+        p {
+            margin-top: 0.5rem;
+        }
+    }
+
+    .processArrow {
+        display: none;
+    }
+
+    .experience {
+        gap: 2rem;
+        margin-top: 5rem;
+        padding-top: 3rem;
+    }
+
+    .visualColumn {
+        grid-row: auto;
+    }
+
+    .visualPanel {
+        min-height: 320px;
+    }
+
+    .biocharVisual {
+        inset: 5% 0 10%;
+    }
+
+    .soilVisual {
+        inset: 20% -10% 0;
+    }
+
+    .experienceCopy h3 {
+        font-size: clamp(2.75rem, 12vw, 4rem);
+    }
+
+    .storySteps {
+        margin-top: 2rem;
+    }
+
+    .conclusion {
+        margin-top: 5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .biocharVisual,
+    .soilVisual,
+    .particles {
+        will-change: auto;
+    }
+}

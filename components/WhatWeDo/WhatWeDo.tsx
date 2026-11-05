@@ -1,5 +1,5 @@
-
 import Image from "next/image";
+import { Mountain, Sprout } from "lucide-react";
 import styles from "./WhatWeDo.module.scss";
 
 export default function WhatWeDo() {
@@ -10,7 +10,6 @@ export default function WhatWeDo() {
             aria-labelledby="what-we-do-title"
         >
             <div className={styles.inner}>
-                {/* Intro: constrained to the main content width */}
                 <div className={styles.intro}>
                     <h2 id="what-we-do-title" className={styles.headline}>
                         We Capture Carbon — and Convert It Into Value
@@ -32,7 +31,6 @@ export default function WhatWeDo() {
                     </div>
                 </div>
 
-                {/* Artwork: breaks out of the content container to fill the viewport */}
                 <div className={styles.soilVisual} aria-hidden="true">
                     <Image
                         src="/assets/what-we-do/Seedling%20in%20a%20Dynamic%20Soil%20Cross-section.webp"
@@ -44,7 +42,6 @@ export default function WhatWeDo() {
                     />
                 </div>
 
-                {/* Pathways: remain aligned to the main content container */}
                 <div className={styles.pathways}>
                     <article
                         id="biochar"
@@ -52,6 +49,9 @@ export default function WhatWeDo() {
                         aria-labelledby="biochar-title"
                     >
                         <div className={styles.pathwayContent}>
+                            <div className={styles.pathwayIcon} aria-hidden="true">
+                                <Sprout size={25} strokeWidth={1.6} />
+                            </div>
                             <h3 id="biochar-title" className={styles.pathwayTitle}>
                                 Distributed Biochar
                             </h3>
@@ -62,7 +62,7 @@ export default function WhatWeDo() {
                                 and creates long-term value.
                             </p>
 
-                            <a className={styles.learnMore} href="#biochar">
+                            <a className={styles.learnMore} href="/projects/biochar">
                                 Learn More <span aria-hidden="true">→</span>
                             </a>
                         </div>
@@ -83,6 +83,9 @@ export default function WhatWeDo() {
                         aria-labelledby="erw-title"
                     >
                         <div className={styles.pathwayContent}>
+                            <div className={styles.pathwayIcon} aria-hidden="true">
+                                <Mountain size={25} strokeWidth={1.6} />
+                            </div>
                             <h3 id="erw-title" className={styles.pathwayTitle}>
                                 Enhanced Rock Weathering
                             </h3>
@@ -95,7 +98,7 @@ export default function WhatWeDo() {
 
                             <a
                                 className={styles.learnMore}
-                                href="#enhanced-rock-weathering"
+                                href="/projects/enhanced-rock-weathering"
                             >
                                 Learn More <span aria-hidden="true">→</span>
                             </a>

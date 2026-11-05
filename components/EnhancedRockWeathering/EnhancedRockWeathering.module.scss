@@ -1,0 +1,374 @@
+@use "../../styles/mixins";
+
+.section {
+    position: relative;
+    overflow: clip;
+    padding-block: clamp(5rem, 9vw, 9rem);
+    background: var(--color-brand-carbon-black);
+    color: var(--color-brand-fossil-light);
+}
+
+.container {
+    @include mixins.content-container;
+}
+
+.eyebrow {
+    margin: 0;
+    color: var(--color-brand-living-green);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+    align-items: start;
+    gap: clamp(3rem, 8vw, 9rem);
+}
+
+.title {
+    margin: 1.5rem 0 0;
+    font-size: clamp(3.25rem, 6.5vw, 6.5rem);
+    font-weight: 500;
+    line-height: 0.94;
+    letter-spacing: -0.065em;
+
+    span {
+        color: #a9a28f;
+    }
+}
+
+.introCopy {
+    display: grid;
+    gap: 1.25rem;
+    padding-top: 2rem;
+
+    p {
+        margin: 0;
+        color: rgba(244, 245, 240, 0.68);
+        font-size: clamp(0.95rem, 1.1vw, 1.0625rem);
+        line-height: 1.8;
+    }
+}
+
+/* Mineral visual */
+
+.materialScene {
+    margin-top: clamp(4rem, 8vw, 8rem);
+}
+
+.sceneMeta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(244, 245, 240, 0.22);
+    color: rgba(244, 245, 240, 0.5);
+    font-size: 0.625rem;
+    letter-spacing: 0.13em;
+}
+
+.sceneVisual {
+    position: relative;
+    min-height: clamp(380px, 42vw, 650px);
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 50% 65%,
+            rgba(118, 85, 61, 0.3),
+            transparent 65%);
+}
+
+.rockVisual {
+    position: absolute;
+    z-index: 2;
+    inset: 5% 12% 8%;
+    will-change: transform;
+
+    img {
+        object-fit: contain;
+    }
+}
+
+.particleLayer {
+    position: absolute;
+    z-index: 1;
+    inset: 8%;
+    pointer-events: none;
+    will-change: transform;
+
+    &::before,
+    &::after {
+        position: absolute;
+        inset: 0;
+        content: "";
+        background-image: radial-gradient(circle,
+                rgba(196, 185, 157, 0.7) 1px,
+                transparent 2px);
+        background-size: 36px 36px;
+        mask-image: radial-gradient(ellipse, black 0%, transparent 68%);
+    }
+
+    &::after {
+        transform: translate(20px, 25px) scale(0.75);
+        opacity: 0.4;
+    }
+}
+
+.soilVisual {
+    position: absolute;
+    z-index: 3;
+    inset: 35% -5% -5%;
+    opacity: 0;
+    pointer-events: none;
+    will-change: transform, opacity;
+
+    img {
+        object-fit: contain;
+    }
+}
+
+.sceneCaption {
+    position: absolute;
+    z-index: 4;
+    right: 1rem;
+    bottom: 1rem;
+    color: rgba(244, 245, 240, 0.55);
+    font-size: 0.625rem;
+    letter-spacing: 0.12em;
+}
+
+/* Process */
+
+.process {
+    margin-top: clamp(5rem, 9vw, 9rem);
+    padding-top: 2rem;
+    border-top: 1px solid rgba(244, 245, 240, 0.22);
+}
+
+.processHeading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.7fr);
+    align-items: end;
+    gap: 3rem;
+
+    h3 {
+        max-width: 15ch;
+        margin: 1.25rem 0 0;
+        font-size: clamp(2rem, 4vw, 4rem);
+        font-weight: 500;
+        line-height: 1.05;
+        letter-spacing: -0.045em;
+    }
+}
+
+.processLead {
+    max-width: 32ch;
+    margin: 0 0 0.4rem;
+    color: rgba(244, 245, 240, 0.58);
+    line-height: 1.7;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    margin-top: 3.5rem;
+    border-top: 1px solid rgba(244, 245, 240, 0.22);
+}
+
+.step {
+    position: relative;
+    min-width: 0;
+    padding: 1.5rem 1.25rem 1.5rem 0;
+}
+
+.step+.step {
+    padding-left: 1.25rem;
+    border-left: 1px solid rgba(244, 245, 240, 0.22);
+}
+
+.stepNumber {
+    color: #a9a28f;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+}
+
+.stepBody {
+    h4 {
+        margin: 2rem 0 0;
+        font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+        font-weight: 500;
+        letter-spacing: -0.025em;
+    }
+
+    p {
+        margin: 0.75rem 0 0;
+        color: rgba(244, 245, 240, 0.58);
+        font-size: 0.85rem;
+        line-height: 1.7;
+    }
+}
+
+.stepConnector {
+    position: absolute;
+    top: 1.35rem;
+    right: 0.65rem;
+    color: var(--color-brand-living-green);
+    font-size: 1.1rem;
+}
+
+/* Outcome */
+
+.outcome {
+    display: grid;
+    grid-template-columns: minmax(0, 0.65fr) minmax(0, 1.35fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    margin-top: clamp(5rem, 9vw, 9rem);
+    padding-top: 2rem;
+    border-top: 1px solid rgba(244, 245, 240, 0.22);
+}
+
+.outcomeLabel {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.outcomeLine {
+    width: 4rem;
+    height: 1px;
+    background: var(--color-brand-living-green);
+}
+
+.outcomeContent {
+    h3 {
+        margin: 0;
+        font-size: clamp(2.25rem, 4.5vw, 4.5rem);
+        font-weight: 500;
+        line-height: 1.05;
+        letter-spacing: -0.05em;
+
+        span {
+            color: #a9a28f;
+        }
+    }
+
+    p {
+        max-width: 58ch;
+        margin: 2rem 0 0;
+        color: rgba(244, 245, 240, 0.65);
+        font-size: 0.95rem;
+        line-height: 1.8;
+    }
+}
+
+/* Tablet and mobile: static composition for now */
+
+@media (max-width: 1000px) {
+    .intro {
+        grid-template-columns: 1fr 0.9fr;
+        gap: 2.5rem;
+    }
+
+    .steps {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        row-gap: 1rem;
+    }
+
+    .step:nth-child(4) {
+        border-left: 0;
+        padding-left: 0;
+    }
+
+    .soilVisual {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 700px) {
+    .section {
+        padding-block: 4rem;
+    }
+
+    .intro {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .title {
+        font-size: clamp(3rem, 12vw, 4.5rem);
+    }
+
+    .introCopy {
+        padding-top: 0;
+    }
+
+    .materialScene {
+        margin-top: 4rem;
+    }
+
+    .sceneVisual {
+        min-height: 320px;
+    }
+
+    .rockVisual {
+        inset: 5% 0 10%;
+    }
+
+    .soilVisual {
+        inset: 45% -10% 0;
+    }
+
+    .process {
+        margin-top: 4rem;
+    }
+
+    .processHeading {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+        margin-top: 2rem;
+    }
+
+    .step,
+    .step+.step {
+        display: grid;
+        grid-template-columns: 2rem minmax(0, 1fr);
+        gap: 1rem;
+        padding: 1.25rem 0;
+        border-left: 0;
+        border-bottom: 1px solid rgba(244, 245, 240, 0.2);
+    }
+
+    .stepBody h4 {
+        margin-top: 0;
+        font-size: 1.25rem;
+    }
+
+    .stepConnector {
+        display: none;
+    }
+
+    .outcome {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 4rem;
+    }
+
+    .outcomeContent p {
+        margin-top: 1.25rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .rockVisual,
+    .particleLayer,
+    .soilVisual {
+        will-change: auto;
+    }
+}
