@@ -229,8 +229,517 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .primaryAction,
     .secondaryAction {
         transition: none;
+    }
+}
+
+
+/* =========================================
+   HERO MOTION
+========================================= */
+
+@keyframes heroFadeUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 28px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes heroVisualReveal {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 22px, 0) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+}
+
+@keyframes geologicalDrift {
+
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate3d(0, -8px, 0) rotate(1deg);
+    }
+}
+
+.content>* {
+    opacity: 0;
+    animation: heroFadeUp 800ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.content>*:nth-child(1) {
+    animation-delay: 100ms;
+}
+
+.content>*:nth-child(2) {
+    animation-delay: 220ms;
+}
+
+.content>*:nth-child(3) {
+    animation-delay: 360ms;
+}
+
+.content>*:nth-child(4) {
+    animation-delay: 500ms;
+}
+
+.visualFrame {
+    opacity: 0;
+    animation: heroVisualReveal 1100ms cubic-bezier(0.22, 1, 0.36, 1) 250ms forwards;
+}
+
+.spiral {
+    transform-origin: center;
+    animation: geologicalDrift 9s ease-in-out 1.4s infinite;
+}
+
+.layers {
+    transform-origin: center;
+    animation: geologicalDrift 11s ease-in-out 1.7s infinite reverse;
+}
+
+.particles {
+    animation: geologicalDrift 7s ease-in-out 2s infinite;
+}
+
+/* =========================================
+   BUTTON MICRO-INTERACTIONS
+========================================= */
+
+.primaryAction {
+    transition:
+        background-color 250ms ease,
+        transform 250ms ease,
+        box-shadow 250ms ease;
+}
+
+.primaryAction:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(21, 23, 20, 0.14);
+}
+
+.secondaryAction {
+    transition:
+        color 250ms ease,
+        border-color 250ms ease,
+        gap 250ms ease;
+}
+
+.secondaryAction:hover {
+    padding-left: 5px;
+}
+
+/* =========================================
+   REDUCED MOTION ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .content>*,
+    .visualFrame,
+    .spiral,
+    .layers,
+    .particles {
+        opacity: 1;
+        animation: none;
+        transform: none;
+    }
+
+    .primaryAction,
+    .secondaryAction {
+        transition: none;
+    }
+}
+
+/* =========================================
+   HERO MOTION
+========================================= */
+
+@keyframes heroFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroVisualReveal {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes geologicalDrift {
+
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: translate3d(0, -7px, 0);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .content>* {
+        animation: heroFadeUp 750ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .content>*:nth-child(1) {
+        animation-delay: 100ms;
+    }
+
+    .content>*:nth-child(2) {
+        animation-delay: 220ms;
+    }
+
+    .content>*:nth-child(3) {
+        animation-delay: 360ms;
+    }
+
+    .content>*:nth-child(4) {
+        animation-delay: 500ms;
+    }
+
+    .visualFrame {
+        animation: heroVisualReveal 1100ms cubic-bezier(0.22, 1, 0.36, 1) both;
+        animation-delay: 250ms;
+    }
+
+    .spiral {
+        animation: geologicalDrift 7s ease-in-out 1.4s infinite;
+    }
+
+    .layers {
+        animation: geologicalDrift 9s ease-in-out 1.8s infinite reverse;
+    }
+
+    .particles {
+        animation: geologicalDrift 6s ease-in-out 2s infinite;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+    .content>*,
+    .visualFrame,
+    .spiral,
+    .layers,
+    .particles {
+        animation: none !important;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* =========================================
+   HERO — GEOLOGICAL ARTWORK ANIMATION
+========================================= */
+
+@keyframes artworkReveal {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes spiralReveal {
+    from {
+        opacity: 0;
+        transform: scale(0.92) rotate(-3deg);
+    }
+
+    to {
+        opacity: 0.88;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes spiralPulse {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    50% {
+        transform: scale(1.015) rotate(0.5deg);
+    }
+}
+
+@keyframes layersDrift {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes particlesFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+@keyframes artworkLineReveal {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes artworkFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .visualFrame {
+        animation: artworkReveal 1000ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .visualFrame::before {
+        animation: artworkFadeIn 1200ms ease 400ms both;
+    }
+
+    .visualFrame::after {
+        opacity: 0;
+        animation: artworkFadeIn 900ms ease 650ms both;
+    }
+
+    .spiral {
+        opacity: 0;
+        animation:
+            spiralReveal 1400ms cubic-bezier(0.22, 1, 0.36, 1) 350ms both,
+            spiralPulse 12s ease-in-out 1800ms infinite;
+        transform-origin: center;
+    }
+
+    .layers {
+        opacity: 0;
+        animation:
+            artworkFadeIn 1100ms ease 700ms both,
+            layersDrift 10s ease-in-out 1800ms infinite;
+    }
+
+    .particles {
+        opacity: 0;
+        animation:
+            artworkFadeIn 1000ms ease 1000ms both,
+            particlesFloat 7s ease-in-out 2000ms infinite;
+    }
+
+    .axis {
+        transform: scaleX(0);
+        transform-origin: left;
+        animation: artworkLineReveal 1000ms ease 900ms both;
+    }
+
+    .visualLabel {
+        opacity: 0;
+        animation: artworkFadeIn 900ms ease 1200ms both;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .visualFrame,
+    .visualFrame::before,
+    .visualFrame::after,
+    .spiral,
+    .layers,
+    .particles,
+    .axis,
+    .visualLabel {
+        animation: none !important;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* =========================================
+   HERO — GEOLOGICAL STORY ANIMATION
+========================================= */
+
+.visualFrame {
+    isolation: isolate;
+}
+
+.spiralSvg,
+.layersSvg,
+.particlesSvg {
+    position: absolute;
+    display: block;
+    overflow: visible;
+    height: auto;
+    pointer-events: none;
+}
+
+.spiralSvg {
+    top: 12%;
+    left: 9%;
+    width: 64%;
+}
+
+.layersSvg {
+    top: 30%;
+    right: 5%;
+    width: 55%;
+}
+
+.particlesSvg {
+    top: 56%;
+    left: 56%;
+    width: 25%;
+}
+
+.spiralPath {
+    fill: none;
+    stroke: var(--color-brand-soil-brown);
+    stroke-width: 1.35;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.88;
+}
+
+.layerPath {
+    fill: none;
+    stroke: var(--color-brand-basalt-grey);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.68;
+}
+
+.particle {
+    fill: var(--color-brand-carbon-black);
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+@keyframes drawGeologicalPath {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes revealParticle {
+    from {
+        opacity: 0;
+        transform: scale(0.25);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes revealArtworkLabel {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .spiralPath {
+        stroke-dasharray: 1100;
+        stroke-dashoffset: 1100;
+        animation: drawGeologicalPath 2.8s cubic-bezier(0.65, 0, 0.35, 1) 0.3s forwards;
+    }
+
+    .layerPath {
+        stroke-dasharray: 220;
+        stroke-dashoffset: 220;
+        animation: drawGeologicalPath 1.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        animation-delay: calc(0.9s + var(--layer-index) * 0.22s);
+    }
+
+    .particle {
+        animation: revealParticle 450ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        animation-delay: calc(2.7s + var(--particle-index) * 0.065s);
+    }
+
+    .visualLabel {
+        opacity: 0;
+        animation: revealArtworkLabel 700ms ease 3.8s forwards;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .spiralPath,
+    .layerPath {
+        stroke-dasharray: none;
+        stroke-dashoffset: 0;
+        animation: none;
+    }
+
+    .particle {
+        opacity: 1;
+        animation: none;
+        transform: none;
+    }
+
+    .visualLabel {
+        opacity: 1;
+        animation: none;
     }
 }

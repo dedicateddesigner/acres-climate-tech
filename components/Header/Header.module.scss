@@ -103,3 +103,173 @@
         padding-inline: var(--space-3);
     }
 }
+
+/* Navigation micro-interaction */
+
+.navigationLink {
+    position: relative;
+    transition: color 220ms ease;
+}
+
+.navigationLink::after {
+    position: absolute;
+    right: 0;
+    bottom: -6px;
+    left: 0;
+    height: 1px;
+    background: var(--color-brand-living-green);
+    content: "";
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 280ms ease;
+}
+
+.navigationLink:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.logoLink,
+.cta {
+    transition:
+        transform 220ms ease,
+        background-color 220ms ease,
+        color 220ms ease;
+}
+
+.logoLink:hover {
+    transform: translateY(-2px);
+}
+
+.cta:hover {
+    transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .navigationLink,
+    .navigationLink::after,
+    .logoLink,
+    .cta {
+        transition: none;
+    }
+}
+
+
+/* =========================================
+   HEADER MICRO-INTERACTIONS
+========================================= */
+
+.navigationLink {
+    position: relative;
+    transition: color 220ms ease;
+}
+
+.navigationLink::after {
+    position: absolute;
+    right: 0;
+    bottom: -6px;
+    left: 0;
+    height: 1px;
+    background: var(--color-brand-living-green);
+    content: "";
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 260ms ease;
+}
+
+.navigationLink:hover::after {
+    transform: scaleX(1);
+}
+
+.logoLink {
+    transition: opacity 220ms ease;
+}
+
+.logoLink:hover {
+    opacity: 0.75;
+}
+
+.cta {
+    transition:
+        background-color 220ms ease,
+        color 220ms ease,
+        transform 220ms ease;
+}
+
+.cta:hover {
+    transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .navigationLink,
+    .navigationLink::after,
+    .logoLink,
+    .cta {
+        transition: none;
+    }
+
+    .cta:hover {
+        transform: none;
+    }
+}
+
+/* =========================================
+   HEADER MICRO-INTERACTIONS
+========================================= */
+
+.navigationLink {
+    position: relative;
+    transition: color 220ms ease;
+}
+
+.navigationLink::after {
+    position: absolute;
+    right: 0;
+    bottom: -6px;
+    left: 0;
+    height: 1px;
+    background: var(--color-brand-living-green);
+    content: "";
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 260ms ease;
+}
+
+.navigationLink:hover::after {
+    transform: scaleX(1);
+}
+
+.logoLink {
+    transition: opacity 220ms ease;
+}
+
+.logoLink:hover {
+    opacity: 0.75;
+}
+
+.cta {
+    transition:
+        background-color 220ms ease,
+        color 220ms ease,
+        transform 220ms ease;
+}
+
+.cta:hover {
+    transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .navigationLink,
+    .navigationLink::after,
+    .logoLink,
+    .cta {
+        transition: none;
+    }
+
+    .cta:hover {
+        transform: none;
+    }
+}
