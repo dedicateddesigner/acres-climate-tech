@@ -1,19 +1,21 @@
 @use "../../styles/mixins";
 
 .hero {
-    min-height: min(48rem, calc(100vh - 6rem));
     display: grid;
+    min-height: min(48rem, calc(100vh - 6rem));
     align-items: center;
+    overflow: hidden;
     background: var(--color-brand-fossil-light);
     color: var(--color-brand-carbon-black);
 }
 
 .inner {
     @include mixins.content-container;
+
     display: grid;
     grid-template-columns: minmax(0, 1.05fr) minmax(22rem, 0.95fr);
-    gap: clamp(3rem, 8vw, 9rem);
     align-items: center;
+    gap: clamp(3rem, 8vw, 9rem);
     padding-block: clamp(3rem, 6vw, 5rem) clamp(4rem, 7vw, 6rem);
 }
 
@@ -39,7 +41,7 @@
 
 .content h1 {
     max-width: 25ch;
-    font-size: clamp(2.75rem, 4.2vw, 3rem);
+    font-size: clamp(2.75rem, 4.2vw, 3.75rem);
     font-weight: 500;
     line-height: 1.15;
 }
@@ -69,7 +71,12 @@
     padding: var(--space-3) var(--space-6);
     font-size: var(--font-size-small);
     text-decoration: none;
-    transition: background-color var(--transition-standard), color var(--transition-standard), border-color var(--transition-standard);
+    transition:
+        background-color 250ms ease,
+        color 250ms ease,
+        border-color 250ms ease,
+        transform 250ms ease,
+        box-shadow 250ms ease;
 }
 
 .primaryAction {
@@ -78,13 +85,15 @@
 }
 
 .primaryAction:hover {
+    transform: translateY(-3px);
     background: var(--color-brand-living-green);
+    box-shadow: 0 8px 20px rgba(21, 23, 20, 0.14);
 }
 
 .secondaryAction {
+    padding-inline: 0;
     border-bottom: 1px solid var(--color-brand-basalt-grey);
     color: var(--color-brand-carbon-black);
-    padding-inline: 0;
 }
 
 .secondaryAction:hover {
@@ -98,30 +107,40 @@
     outline-offset: 4px;
 }
 
+/* Geological artwork */
+
 .visual {
     min-width: 0;
 }
 
 .visualFrame {
     position: relative;
+    isolation: isolate;
     width: min(100%, 34rem);
     aspect-ratio: 1 / 1.08;
     margin-inline: auto;
     overflow: hidden;
-    border-left: 1px solid color-mix(in srgb, var(--color-brand-basalt-grey) 45%, transparent);
-    border-bottom: 1px solid color-mix(in srgb, var(--color-brand-basalt-grey) 45%, transparent);
+    border-bottom: 1px solid color-mix(in srgb,
+            var(--color-brand-basalt-grey) 45%,
+            transparent);
+    border-left: 1px solid color-mix(in srgb,
+            var(--color-brand-basalt-grey) 45%,
+            transparent);
 }
 
 .visualFrame::before,
 .visualFrame::after {
     position: absolute;
-    content: "";
+    z-index: -1;
     pointer-events: none;
+    content: "";
 }
 
 .visualFrame::before {
     inset: 12% 10% 12% 12%;
-    border: 1px solid color-mix(in srgb, var(--color-brand-soil-brown) 50%, transparent);
+    border: 1px solid color-mix(in srgb,
+            var(--color-brand-soil-brown) 50%,
+            transparent);
     border-radius: 50%;
     transform: rotate(-12deg) scaleY(0.82);
 }
@@ -131,488 +150,9 @@
     bottom: 9%;
     left: 50%;
     width: 1px;
-    background: color-mix(in srgb, var(--color-brand-basalt-grey) 35%, transparent);
-}
-
-.visualFrame img {
-    position: absolute;
-    display: block;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-}
-
-.spiral {
-    top: 12%;
-    left: 9%;
-    width: 64%;
-    opacity: 0.88;
-}
-
-.layers {
-    top: 30%;
-    right: 5%;
-    width: 55%;
-    opacity: 0.68;
-}
-
-.particles {
-    top: 56%;
-    left: 56%;
-    width: 25%;
-    opacity: 0.52;
-}
-
-.axis {
-    position: absolute;
-    right: 16%;
-    bottom: 9%;
-    left: 12%;
-    height: 1px;
-    background: var(--color-brand-soil-brown);
-    opacity: 0.7;
-}
-
-.visualLabel {
-    position: absolute;
-    bottom: 1.25rem;
-    left: 1.25rem;
-    color: var(--color-brand-basalt-grey);
-    font-size: 0.6875rem;
-    font-weight: 500;
-}
-
-@media (max-width: 900px) {
-    .inner {
-        grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.9fr);
-        gap: clamp(2rem, 6vw, 4rem);
-    }
-
-    .content h1 {
-        font-size: clamp(2.65rem, 6vw, 4.5rem);
-    }
-}
-
-@media (max-width: 800px) {
-    .hero {
-        min-height: auto;
-    }
-
-    .inner {
-        grid-template-columns: 1fr;
-        gap: var(--space-12);
-        padding-block: var(--space-12) var(--space-16);
-    }
-
-    .content h1 {
-        max-width: 12ch;
-        font-size: clamp(2.65rem, 12vw, 4rem);
-    }
-
-    .supportingCopy {
-        margin-top: var(--space-6);
-    }
-
-    .actions {
-        margin-top: var(--space-8);
-    }
-
-    .visualFrame {
-        width: min(100%, 28rem);
-    }
-}
-
-@media (max-width: 700px) {
-    .visualFrame {
-        width: min(100%, 19rem);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-    .primaryAction,
-    .secondaryAction {
-        transition: none;
-    }
-}
-
-
-/* =========================================
-   HERO MOTION
-========================================= */
-
-@keyframes heroFadeUp {
-    from {
-        opacity: 0;
-        transform: translate3d(0, 28px, 0);
-    }
-
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-@keyframes heroVisualReveal {
-    from {
-        opacity: 0;
-        transform: translate3d(0, 22px, 0) scale(0.97);
-    }
-
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0) scale(1);
-    }
-}
-
-@keyframes geologicalDrift {
-
-    0%,
-    100% {
-        transform: translate3d(0, 0, 0) rotate(0deg);
-    }
-
-    50% {
-        transform: translate3d(0, -8px, 0) rotate(1deg);
-    }
-}
-
-.content>* {
-    opacity: 0;
-    animation: heroFadeUp 800ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.content>*:nth-child(1) {
-    animation-delay: 100ms;
-}
-
-.content>*:nth-child(2) {
-    animation-delay: 220ms;
-}
-
-.content>*:nth-child(3) {
-    animation-delay: 360ms;
-}
-
-.content>*:nth-child(4) {
-    animation-delay: 500ms;
-}
-
-.visualFrame {
-    opacity: 0;
-    animation: heroVisualReveal 1100ms cubic-bezier(0.22, 1, 0.36, 1) 250ms forwards;
-}
-
-.spiral {
-    transform-origin: center;
-    animation: geologicalDrift 9s ease-in-out 1.4s infinite;
-}
-
-.layers {
-    transform-origin: center;
-    animation: geologicalDrift 11s ease-in-out 1.7s infinite reverse;
-}
-
-.particles {
-    animation: geologicalDrift 7s ease-in-out 2s infinite;
-}
-
-/* =========================================
-   BUTTON MICRO-INTERACTIONS
-========================================= */
-
-.primaryAction {
-    transition:
-        background-color 250ms ease,
-        transform 250ms ease,
-        box-shadow 250ms ease;
-}
-
-.primaryAction:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(21, 23, 20, 0.14);
-}
-
-.secondaryAction {
-    transition:
-        color 250ms ease,
-        border-color 250ms ease,
-        gap 250ms ease;
-}
-
-.secondaryAction:hover {
-    padding-left: 5px;
-}
-
-/* =========================================
-   REDUCED MOTION ACCESSIBILITY
-========================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .content>*,
-    .visualFrame,
-    .spiral,
-    .layers,
-    .particles {
-        opacity: 1;
-        animation: none;
-        transform: none;
-    }
-
-    .primaryAction,
-    .secondaryAction {
-        transition: none;
-    }
-}
-
-/* =========================================
-   HERO MOTION
-========================================= */
-
-@keyframes heroFadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(24px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes heroVisualReveal {
-    from {
-        opacity: 0;
-        transform: translateY(18px) scale(0.97);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@keyframes geologicalDrift {
-
-    0%,
-    100% {
-        transform: translate3d(0, 0, 0);
-    }
-
-    50% {
-        transform: translate3d(0, -7px, 0);
-    }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .content>* {
-        animation: heroFadeUp 750ms cubic-bezier(0.22, 1, 0.36, 1) both;
-    }
-
-    .content>*:nth-child(1) {
-        animation-delay: 100ms;
-    }
-
-    .content>*:nth-child(2) {
-        animation-delay: 220ms;
-    }
-
-    .content>*:nth-child(3) {
-        animation-delay: 360ms;
-    }
-
-    .content>*:nth-child(4) {
-        animation-delay: 500ms;
-    }
-
-    .visualFrame {
-        animation: heroVisualReveal 1100ms cubic-bezier(0.22, 1, 0.36, 1) both;
-        animation-delay: 250ms;
-    }
-
-    .spiral {
-        animation: geologicalDrift 7s ease-in-out 1.4s infinite;
-    }
-
-    .layers {
-        animation: geologicalDrift 9s ease-in-out 1.8s infinite reverse;
-    }
-
-    .particles {
-        animation: geologicalDrift 6s ease-in-out 2s infinite;
-    }
-}
-
-/* Respect reduced-motion preferences */
-@media (prefers-reduced-motion: reduce) {
-
-    .content>*,
-    .visualFrame,
-    .spiral,
-    .layers,
-    .particles {
-        animation: none !important;
-        opacity: 1;
-        transform: none;
-    }
-}
-
-/* =========================================
-   HERO — GEOLOGICAL ARTWORK ANIMATION
-========================================= */
-
-@keyframes artworkReveal {
-    from {
-        opacity: 0;
-        transform: translateY(18px) scale(0.96);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@keyframes spiralReveal {
-    from {
-        opacity: 0;
-        transform: scale(0.92) rotate(-3deg);
-    }
-
-    to {
-        opacity: 0.88;
-        transform: scale(1) rotate(0deg);
-    }
-}
-
-@keyframes spiralPulse {
-
-    0%,
-    100% {
-        transform: scale(1) rotate(0deg);
-    }
-
-    50% {
-        transform: scale(1.015) rotate(0.5deg);
-    }
-}
-
-@keyframes layersDrift {
-
-    0%,
-    100% {
-        transform: translateX(0);
-    }
-
-    50% {
-        transform: translateX(5px);
-    }
-}
-
-@keyframes particlesFloat {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-7px);
-    }
-}
-
-@keyframes artworkLineReveal {
-    from {
-        transform: scaleX(0);
-    }
-
-    to {
-        transform: scaleX(1);
-    }
-}
-
-@keyframes artworkFadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .visualFrame {
-        animation: artworkReveal 1000ms cubic-bezier(0.22, 1, 0.36, 1) both;
-    }
-
-    .visualFrame::before {
-        animation: artworkFadeIn 1200ms ease 400ms both;
-    }
-
-    .visualFrame::after {
-        opacity: 0;
-        animation: artworkFadeIn 900ms ease 650ms both;
-    }
-
-    .spiral {
-        opacity: 0;
-        animation:
-            spiralReveal 1400ms cubic-bezier(0.22, 1, 0.36, 1) 350ms both,
-            spiralPulse 12s ease-in-out 1800ms infinite;
-        transform-origin: center;
-    }
-
-    .layers {
-        opacity: 0;
-        animation:
-            artworkFadeIn 1100ms ease 700ms both,
-            layersDrift 10s ease-in-out 1800ms infinite;
-    }
-
-    .particles {
-        opacity: 0;
-        animation:
-            artworkFadeIn 1000ms ease 1000ms both,
-            particlesFloat 7s ease-in-out 2000ms infinite;
-    }
-
-    .axis {
-        transform: scaleX(0);
-        transform-origin: left;
-        animation: artworkLineReveal 1000ms ease 900ms both;
-    }
-
-    .visualLabel {
-        opacity: 0;
-        animation: artworkFadeIn 900ms ease 1200ms both;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-    .visualFrame,
-    .visualFrame::before,
-    .visualFrame::after,
-    .spiral,
-    .layers,
-    .particles,
-    .axis,
-    .visualLabel {
-        animation: none !important;
-        opacity: 1;
-        transform: none;
-    }
-}
-
-/* =========================================
-   HERO — GEOLOGICAL STORY ANIMATION
-========================================= */
-
-.visualFrame {
-    isolation: isolate;
+    background: color-mix(in srgb,
+            var(--color-brand-basalt-grey) 35%,
+            transparent);
 }
 
 .spiralSvg,
@@ -620,8 +160,8 @@
 .particlesSvg {
     position: absolute;
     display: block;
-    overflow: visible;
     height: auto;
+    overflow: visible;
     pointer-events: none;
 }
 
@@ -668,6 +208,27 @@
     transform-origin: center;
 }
 
+.axis {
+    position: absolute;
+    right: 16%;
+    bottom: 9%;
+    left: 12%;
+    height: 1px;
+    background: var(--color-brand-soil-brown);
+    opacity: 0.7;
+}
+
+.visualLabel {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    color: var(--color-brand-basalt-grey);
+    font-size: 0.6875rem;
+    font-weight: 500;
+}
+
+/* Artwork drawing animation */
+
 @keyframes drawGeologicalPath {
     to {
         stroke-dashoffset: 0;
@@ -686,10 +247,10 @@
     }
 }
 
-@keyframes revealArtworkLabel {
+@keyframes revealArtwork {
     from {
         opacity: 0;
-        transform: translateY(5px);
+        transform: translateY(16px);
     }
 
     to {
@@ -699,6 +260,30 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
+    .content>* {
+        animation: revealArtwork 750ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .content>*:nth-child(1) {
+        animation-delay: 100ms;
+    }
+
+    .content>*:nth-child(2) {
+        animation-delay: 220ms;
+    }
+
+    .content>*:nth-child(3) {
+        animation-delay: 360ms;
+    }
+
+    .content>*:nth-child(4) {
+        animation-delay: 500ms;
+    }
+
+    .visualFrame {
+        animation: revealArtwork 1000ms cubic-bezier(0.22, 1, 0.36, 1) 250ms both;
+    }
+
     .spiralPath {
         stroke-dasharray: 1100;
         stroke-dashoffset: 1100;
@@ -719,27 +304,99 @@
 
     .visualLabel {
         opacity: 0;
-        animation: revealArtworkLabel 700ms ease 3.8s forwards;
+        animation: revealArtwork 700ms ease 3.8s forwards;
     }
 }
 
+/* Tablet */
+
+@media (max-width: 900px) {
+    .inner {
+        grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.9fr);
+        gap: clamp(2rem, 6vw, 4rem);
+    }
+
+    .content h1 {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 800px) {
+    .hero {
+        min-height: auto;
+    }
+
+    .inner {
+        grid-template-columns: 1fr;
+        gap: var(--space-12);
+        padding-block: var(--space-12) var(--space-16);
+    }
+
+    .content h1 {
+        max-width: 12ch;
+        font-size: clamp(2.65rem, 12vw, 4rem);
+    }
+
+    .supportingCopy {
+        margin-top: var(--space-6);
+    }
+
+    .actions {
+        margin-top: var(--space-8);
+    }
+
+    .visualFrame {
+        width: min(100%, 28rem);
+    }
+}
+
+@media (max-width: 700px) {
+    .visualFrame {
+        width: min(100%, 19rem);
+    }
+}
+
+/* Accessibility */
+
 @media (prefers-reduced-motion: reduce) {
+
+    .content>*,
+    .visualFrame,
+    .spiralPath,
+    .layerPath,
+    .particle,
+    .visualLabel,
+    .primaryAction,
+    .secondaryAction {
+        animation: none !important;
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
 
     .spiralPath,
     .layerPath {
         stroke-dasharray: none;
         stroke-dashoffset: 0;
-        animation: none;
     }
 
     .particle {
         opacity: 1;
-        animation: none;
-        transform: none;
+    }
+}
+
+@media (max-width: 800px) {
+    .content h1 {
+        max-width: 14ch;
+        font-size: clamp(2.25rem, 9vw, 3.25rem);
+        line-height: 1.12;
     }
 
-    .visualLabel {
-        opacity: 1;
-        animation: none;
+    .supportingCopy {
+        margin-top: var(--space-6);
+        font-size: 1rem;
+        line-height: 1.55;
     }
 }
